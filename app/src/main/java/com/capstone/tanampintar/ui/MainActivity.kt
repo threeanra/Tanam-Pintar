@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigation.apply {
             background = null
-            menu.getItem(2).isEnabled = false
+            menu.getItem(1).isEnabled = false
         }
 
         val navHostFragment =

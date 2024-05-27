@@ -5,17 +5,9 @@
         android:title="@string/home"
         android:icon="@drawable/baseline_home_24"/>
 
-    <item android:id="@+id/reminderFragment"
-        android:title="@string/reminder"
-        android:icon="@drawable/baseline_access_time_filled_24"/>
-
     <item
         android:title=""
         android:enabled="true"/>
-
-    <item android:id="@+id/historyFragment"
-        android:title="@string/history"
-        android:icon="@drawable/baseline_list_alt_24"/>
 
     <item android:id="@+id/profileFragment"
         android:title="@string/setting"

@@ -20,12 +20,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             app:fabCradleMargin="10dp"
-            app:fabCradleRoundedCornerRadius="50dp"
+            app:fabCradleRoundedCornerRadius="30dp"
             app:fabCradleVerticalOffset="10dp">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavigation"
                 app:itemRippleColor="@null"
+                app:labelVisibilityMode="unlabeled"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="16dp"

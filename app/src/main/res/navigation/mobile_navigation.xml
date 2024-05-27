@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/historyFragment"
-        android:name="com.capstone.tanampintar.ui.history.HistoryFragment"
-        android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
+        android:id="@+id/profileFragment"
+        android:name="com.capstone.tanampintar.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 
 </navigation>
