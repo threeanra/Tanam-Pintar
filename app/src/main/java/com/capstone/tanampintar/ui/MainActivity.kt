@@ -1,12 +1,10 @@
-package com.capstone.tanampintar
+package com.capstone.tanampintar.ui
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.capstone.tanampintar.R
 import com.capstone.tanampintar.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
