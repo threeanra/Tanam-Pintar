@@ -2,9 +2,12 @@ package com.capstone.tanampintar.ui.splashscreen
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.WindowInsets
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.tanampintar.databinding.ActivitySplashScreenBinding
 import com.capstone.tanampintar.ui.MainActivity
@@ -32,7 +35,19 @@ class SplashScreenActivity : AppCompatActivity() {
             DELAY
         )
 
+        //Full screen mode
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            @Suppress("DEPRECATION")
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
+
     }
+
     companion object {
         const val DELAY = 3000L
     }

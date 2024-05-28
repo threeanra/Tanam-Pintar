@@ -42,8 +42,9 @@
             android:contentDescription="@string/app_name"
             android:src="@drawable/baseline_photo_camera_24"
             app:maxImageSize="32dp"
-            app:tint="@color/white"
-            android:backgroundTint="@color/main_color"
+            app:tint="@color/main_color"
+            app:borderWidth="0dp"
+            android:backgroundTint="@color/white"
             app:layout_anchor="@id/bottomAppBar" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

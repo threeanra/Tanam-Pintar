@@ -4,7 +4,10 @@
         <!-- Customize your light theme here. -->
          <item name="colorPrimary">@color/main_color</item>
 
+        <!-- Status bar color-->
+         <item name="android:statusBarColor">@color/main_color</item>
     </style>
 
     <style name="Theme.TanamPintar" parent="Base.Theme.TanamPintar" />
+
 </resources>
