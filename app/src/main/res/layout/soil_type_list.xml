@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="30dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginRight="10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
+        android:paddingTop="15dp"
+        android:paddingBottom="12dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="30dp"
+            android:elevation="0dp">
+
+            <ImageView
+                android:id="@+id/soilImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image_preview" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/soilTypeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:minHeight="16dp"
+            android:textColor="@android:color/secondary_text_light"
+            android:text="@string/soil_type"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
