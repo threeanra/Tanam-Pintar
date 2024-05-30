@@ -16,6 +16,9 @@
     <string name="desc">Membantu menganalisa tanah disekitarmu dengan sangat mudah</string>
     <string name="soil_type_title">Jenis Tanah</string>
     <string name="soil_type">Jenis Tanah</string>
+    <string name="history_card_title">Riwayat Analisa</string>
+    <string name="reminder_card_title">Jadwal Menyiram</string>
+    <string name="desc_card">Sentuh disini</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -15,6 +15,9 @@
         android:theme="@style/Theme.TanamPintar"
         tools:targetApi="31">
         <activity
+            android:name=".ui.history.HistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.MainActivity"
             android:exported="false" />
         <activity
