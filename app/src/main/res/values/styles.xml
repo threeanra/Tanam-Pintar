@@ -2,10 +2,10 @@
 <resources>
     <style name="customEditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/edit_text</item>
-        <item name="boxCornerRadiusBottomStart">20dp</item>
-        <item name="boxCornerRadiusBottomEnd">20dp</item>
-        <item name="boxCornerRadiusTopStart">20dp</item>
-        <item name="boxCornerRadiusTopEnd">20dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
         <item name="errorIconDrawable">@null</item>
     </style>
 </resources>

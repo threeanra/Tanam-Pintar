@@ -17,15 +17,15 @@
         <ImageView
             android:layout_width="300dp"
             android:layout_height="200dp"
-            android:layout_marginTop="30dp"
             android:contentDescription="@string/app_name"
+            android:layout_marginTop="30dp"
             android:src="@drawable/logo_full"
             android:layout_gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login"
+            android:text="@string/register"
             android:textSize="23sp"
             android:fontFamily="@font/poppins_medium"
             android:textStyle="bold"
@@ -36,10 +36,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/desc_login"
+            android:text="@string/desc_register"
             android:textSize="14sp"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/desc"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fullnameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/customEditText"
+            android:layout_marginTop="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edFullname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="@string/fullname"
+                android:minHeight="50dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="0dp"
+                android:inputType="textPersonName"
+                tools:ignore="TouchTargetSizeCheck"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailEditText"
@@ -106,7 +128,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/desc"
-            android:text="@string/desc_login2"/>
+            android:text="@string/desc_register2"/>
 
         <Button
             android:id="@+id/register"
@@ -117,7 +139,7 @@
             android:textColor="@color/main_color"
             android:background="@drawable/button_style_2"
             android:fontFamily="@font/poppins_medium"
-            android:text="@string/button_register"/>
+            android:text="@string/button_login"/>
 
     </LinearLayout>
 

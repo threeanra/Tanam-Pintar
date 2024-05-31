@@ -23,11 +23,22 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!--    Register-->
+    <!--    Component Edit Text-->
     <string name="password_require">Minimal 8 Karakter</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="email_error_message">Masukkan format email dengan benar</string>
 
+    <!--    Login-->
+    <string name="login">Login</string>
+    <string name="desc_login">Masukan email dan password untuk masuk</string>
+    <string name="desc_login2">Belum punya akun?</string>
+    <string name="button_login">Masuk</string>
+    <string name="button_register">Daftar</string>
+
+    <!--    Register-->
+    <string name="register">Register</string>
+    <string name="desc_register">Daftarkan akunmu untuk masuk</string>
+    <string name="desc_register2">Sudah punya akun?</string>
 
 </resources>
