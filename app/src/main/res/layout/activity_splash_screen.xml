@@ -10,9 +10,9 @@
 
     <ImageView
         android:id="@+id/splashImage"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:src="@drawable/logo"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:src="@drawable/logo_full"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
