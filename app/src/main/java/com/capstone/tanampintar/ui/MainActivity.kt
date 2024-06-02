@@ -7,7 +7,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.capstone.tanampintar.R
 import com.capstone.tanampintar.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class  MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 

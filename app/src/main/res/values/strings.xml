@@ -41,4 +41,12 @@
     <string name="desc_register">Daftarkan akunmu untuk masuk</string>
     <string name="desc_register2">Sudah punya akun?</string>
 
+    <!--    Detail-->
+    <string name="imagedetail">imageDetail</string>
+    <string name="buttonback">buttonBack</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="plant_name">Nama Tanaman</string>
+    <string name="imageplant">imagePlant</string>
+
 </resources>
