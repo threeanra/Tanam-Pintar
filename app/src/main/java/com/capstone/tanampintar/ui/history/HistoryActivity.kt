@@ -10,6 +10,7 @@ import com.capstone.tanampintar.R
 import com.capstone.tanampintar.databinding.ActivityHistoryBinding
 import com.capstone.tanampintar.databinding.ActivityMainBinding
 import com.capstone.tanampintar.ui.MainActivity
+import com.capstone.tanampintar.ui.detail.DetailActivity
 import com.capstone.tanampintar.ui.login.LoginActivity
 
 class HistoryActivity : AppCompatActivity() {
@@ -24,6 +25,12 @@ class HistoryActivity : AppCompatActivity() {
 //            onBackPressedDispatcher.onBackPressed()
 //            finish()
             val intent = Intent(this@HistoryActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.tombol2.setOnClickListener {
+            val intent = Intent(this@HistoryActivity, DetailActivity::class.java)
             startActivity(intent)
             finish()
         }

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.tanampintar.R
 import com.capstone.tanampintar.adapter.Plant
 import com.capstone.tanampintar.adapter.PlantAdapter
@@ -24,11 +25,11 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.imgBack.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            onBackPressedDispatcher.onBackPressed()
+            finish()
         }
 
-        binding.plantList.layoutManager = GridLayoutManager(this, 2)
+        binding.plantList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         val plantList = listOf(
             Plant("Anggur", R.drawable.image_preview),
