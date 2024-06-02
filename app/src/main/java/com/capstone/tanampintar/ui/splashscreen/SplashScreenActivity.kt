@@ -11,6 +11,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.tanampintar.databinding.ActivitySplashScreenBinding
 import com.capstone.tanampintar.ui.MainActivity
+import com.capstone.tanampintar.ui.detail.DetailActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
@@ -29,6 +30,7 @@ class SplashScreenActivity : AppCompatActivity() {
 //                finish()
 //            }
          val intent = Intent(this, MainActivity::class.java)
+//         val intent = Intent(this, DetailActivity::class.java)
          startActivity(intent)
          finish()
         },
