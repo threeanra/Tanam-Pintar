@@ -21,11 +21,8 @@ class HistoryActivity : AppCompatActivity() {
         binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.tombol.setOnClickListener {
-//            onBackPressedDispatcher.onBackPressed()
-//            finish()
-            val intent = Intent(this@HistoryActivity, LoginActivity::class.java)
-            startActivity(intent)
+        binding.imgBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
             finish()
         }
 
