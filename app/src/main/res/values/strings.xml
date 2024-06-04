@@ -49,4 +49,13 @@
     <string name="plant_name">Nama Tanaman</string>
     <string name="imageplant">imagePlant</string>
 
+    <!--    Profile-->
+    <string name="imageprofile">imagePerson</string>
+    <string name="nameProfile">Andrew Albert</string>
+    <string name="emailProfile">andrewalbert@gmail.com</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="profile_detail">Profile Detail</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+
 </resources>

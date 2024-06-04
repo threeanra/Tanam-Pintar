@@ -63,7 +63,7 @@
             app:layout_constraintTop_toBottomOf="@+id/img_detail" />
 
         <View
-            android:id="@+id/line"
+            android:id="@+id/line1"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginStart="16dp"
@@ -85,7 +85,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/line" />
+            app:layout_constraintTop_toBottomOf="@+id/line1" />
 
         <TextView
             android:id="@+id/textPlantRecommend"
