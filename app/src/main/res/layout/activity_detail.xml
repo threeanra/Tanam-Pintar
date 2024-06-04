@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/img_detail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/imagedetail"
             android:scaleType="centerCrop"
@@ -45,20 +45,19 @@
 
         </androidx.cardview.widget.CardView>
 
-
         <TextView
             android:id="@+id/text_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:fontFamily="@font/poppins_bold"
             android:maxLines="1"
             android:text="@string/title"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_detail" />
@@ -116,7 +115,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textPlantRecommend"
             tools:listitem="@layout/plant_recommendations" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

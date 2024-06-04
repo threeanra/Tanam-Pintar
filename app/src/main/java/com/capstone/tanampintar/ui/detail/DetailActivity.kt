@@ -32,7 +32,7 @@ class DetailActivity : AppCompatActivity() {
         binding.plantList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         val plantList = listOf(
-            Plant("Anggur", R.drawable.image_preview),
+            Plant("Anggur", R.drawable.image_detail),
             Plant("Tomat", R.drawable.image_preview),
             Plant("Anggur", R.drawable.image_preview),
             Plant("Tomat", R.drawable.image_preview),

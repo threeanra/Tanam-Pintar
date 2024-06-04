@@ -13,6 +13,7 @@ import com.capstone.tanampintar.R
 data class Plant(val name: String, val imageResId: Int)
 
 class PlantAdapter(private val plantList: List<Plant>) :
+
     RecyclerView.Adapter<PlantAdapter.PlantViewHolder>() {
     class PlantViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val plantImage = view.findViewById<ImageView>(R.id.plantImage)
