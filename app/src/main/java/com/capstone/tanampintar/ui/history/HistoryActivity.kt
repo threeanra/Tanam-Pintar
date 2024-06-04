@@ -21,15 +21,12 @@ class HistoryActivity : AppCompatActivity() {
         binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //button back
         binding.imgBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
             finish()
         }
 
-        binding.tombol2.setOnClickListener {
-            val intent = Intent(this@HistoryActivity, DetailActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+
     }
 }

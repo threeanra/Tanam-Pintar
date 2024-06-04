@@ -51,11 +51,15 @@
 
     <!--    Profile-->
     <string name="imageprofile">imagePerson</string>
-    <string name="nameProfile">Andrew Albert</string>
-    <string name="emailProfile">andrewalbert@gmail.com</string>
+    <string name="nameProfile">Your Name</string>
+    <string name="emailProfile">youremail@email.com</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="profile_detail">Profile Detail</string>
     <string name="settings">Settings</string>
     <string name="logout">Logout</string>
+
+    <!--    History-->
+    <string name="title_history">Riwayat Analisa</string>
+    <string name="time_history">DD:MM:YYYY</string>
 
 </resources>

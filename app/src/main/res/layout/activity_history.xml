@@ -36,7 +36,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="History"
+            android:text="@string/history_card_title"
             android:textSize="16sp"
             android:textColor="@color/white"
             android:layout_gravity="center"
@@ -51,35 +51,12 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="80dp">
 
-        <TextView
-            android:id="@id/muke"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="muktem"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/tombol"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Cek Login"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/muke" />
-
-        <Button
-            android:id="@+id/tombol2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Cek Detail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tombol" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
+            tools:listitem="@layout/history_list"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
