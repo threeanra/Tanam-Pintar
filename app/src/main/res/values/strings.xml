@@ -57,6 +57,9 @@
     <string name="profile_detail">Profile Detail</string>
     <string name="settings">Settings</string>
     <string name="logout">Logout</string>
+    <string name="message_dialog">Apakah anda yakin ingin logout?</string>
+    <string name="no">Tidak</string>
+    <string name="yes">Iya</string>
 
     <!--    History-->
     <string name="title_history">Riwayat Analisa</string>
