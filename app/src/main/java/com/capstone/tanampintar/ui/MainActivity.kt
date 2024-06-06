@@ -1,11 +1,13 @@
 package com.capstone.tanampintar.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.capstone.tanampintar.R
 import com.capstone.tanampintar.databinding.ActivityMainBinding
+import com.capstone.tanampintar.ui.analyze.AnalyzeActivity
 
 class  MainActivity : AppCompatActivity() {
 
@@ -27,7 +29,8 @@ class  MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setupWithNavController(navController)
 
         binding.fab.setOnClickListener {
-            //not implemented yet
+            val intent = Intent(this, AnalyzeActivity::class.java)
+            startActivity(intent)
         }
 
     }

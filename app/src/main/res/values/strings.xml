@@ -64,5 +64,9 @@
     <!--    History-->
     <string name="title_history">Riwayat Analisa</string>
     <string name="time_history">DD:MM:YYYY</string>
-
+    
+    <!--    Analyze-->
+    <string name="title_analyze">Deteksi Tanah</string>
+    <string name="save_history">Simpan Riwayat?</string>
+    <string name="detail_soil">Detail Tanah</string>
 </resources>

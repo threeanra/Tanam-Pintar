@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.capstone.tanampintar.R
 import com.capstone.tanampintar.databinding.FragmentHomeBinding
+import com.capstone.tanampintar.ui.detail.DetailActivity
 import com.capstone.tanampintar.ui.history.HistoryActivity
 
 class HomeFragment : Fragment() {
@@ -27,6 +27,11 @@ class HomeFragment : Fragment() {
 
         homeBinding.historyCard.setOnClickListener {
             val intent = Intent(requireContext(), HistoryActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeBinding.reminderCard.setOnClickListener {
+            val intent = Intent(requireContext(), DetailActivity::class.java)
             startActivity(intent)
         }
 
