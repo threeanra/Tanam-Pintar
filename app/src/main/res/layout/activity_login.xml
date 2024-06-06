@@ -91,7 +91,6 @@
             android:background="@drawable/button_style_1"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/button_login"
-
             android:textAllCaps="false" />
 
         <com.google.android.material.divider.MaterialDivider

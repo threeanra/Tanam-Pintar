@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Tanam Pintar</string>
+    <string name="image">Gambar</string>
 
     <!--    Splash Screen-->
     <string name="splash_screen">Created by C241-PS481 with ❤️‍</string>
@@ -69,4 +70,11 @@
     <string name="title_analyze">Deteksi Tanah</string>
     <string name="save_history">Simpan Riwayat?</string>
     <string name="detail_soil">Detail Tanah</string>
+    <string name="camera">Ini Kamera</string>
+    <string name="gallery">Ini Galeri</string>
+    <string name="reset">Reset Gambar</string>
+    <string name="analyze">Analisa Gambar</string>
+    <string name="save_button">Simpan Riwayat?</string>
+    <string name="detail_button">Detail Button</string>
+    <string name="result_analyze">Hasil Analisa : %s</string>
 </resources>

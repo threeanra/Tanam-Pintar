@@ -1,11 +1,7 @@
 package com.capstone.tanampintar.ui.analyze
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.capstone.tanampintar.R
 import com.capstone.tanampintar.databinding.ActivityAnalyzeBinding
 
 class AnalyzeActivity : AppCompatActivity() {
