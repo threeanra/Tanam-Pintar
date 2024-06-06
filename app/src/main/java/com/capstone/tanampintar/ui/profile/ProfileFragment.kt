@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import com.capstone.tanampintar.R
 import com.capstone.tanampintar.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
@@ -33,18 +35,25 @@ class ProfileFragment : Fragment() {
     }
 
     private fun showLogoutDialog() {
-        val alertDialog = AlertDialog.Builder(this.requireActivity())
-        alertDialog.setTitle("Logout")
-            .setMessage("Apakah Kamu Yakin Ingin Logout?")
-            .setPositiveButton("Iya") { dialog, _ ->
-                // Handle Logic Code Logout
-                dialog.dismiss()
-            }
-            .setNegativeButton("Tidak") { dialog, _ ->
-                dialog.dismiss()
-            }
-        val dialog = alertDialog.create()
-        dialog.show()
+        val dialogView =
+            LayoutInflater.from(this.requireActivity()).inflate(R.layout.alert_dialog, null)
+
+        val builder = AlertDialog.Builder(this.requireActivity())
+            .setView(dialogView)
+            .setCancelable(false)
+
+        val alertDialog = builder.create()
+
+        dialogView.findViewById<Button>(R.id.btnYes).setOnClickListener {
+            // Handle Logic Code Logout
+            alertDialog.dismiss()
+        }
+        dialogView.findViewById<Button>(R.id.btnNo).setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+
+        alertDialog.show()
     }
 
     override fun onDestroyView() {
