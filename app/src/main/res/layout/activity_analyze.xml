@@ -190,7 +190,6 @@
                 android:text="@string/detail_button"
                 android:background="@drawable/button_style_1"
                 android:textAllCaps="false"/>
-
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
