@@ -49,15 +49,15 @@
             android:layout_marginTop="12dp">
 
             <com.capstone.tanampintar.component.EditTextEmail
-                android:id="@+id/edEmail"
+                android:id="@+id/edLoginEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
                 android:hint="@string/email"
+                android:inputType="textEmailAddress"
                 android:minHeight="50dp"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="0dp"
-                android:inputType="textEmailAddress"
                 tools:ignore="TouchTargetSizeCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -70,7 +70,7 @@
             android:layout_marginTop="12dp">
 
             <com.capstone.tanampintar.component.EditTextPassword
-                android:id="@+id/edPassword"
+                android:id="@+id/edPasswordEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"

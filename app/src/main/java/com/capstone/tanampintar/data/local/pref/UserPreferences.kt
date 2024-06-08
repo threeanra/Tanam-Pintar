@@ -6,10 +6,12 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.capstone.tanampintar.data.network.retrofit.ApiConfig.removeToken
+import com.capstone.tanampintar.data.network.retrofit.ApiConfig.setToken
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "preferences")
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "user_preferences")
 
 class UserPreferences private constructor(private val dataStore: DataStore<Preferences>) {
 
@@ -17,6 +19,7 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         dataStore.edit { preferences ->
             preferences[AUTH] = token
         }
+        setToken(token)
     }
 
     fun getToken(): Flow<String?> {
@@ -29,6 +32,7 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         dataStore.edit { preferences ->
             preferences.remove(AUTH)
         }
+        removeToken()
     }
 
     companion object {
