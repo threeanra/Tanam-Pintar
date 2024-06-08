@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isInvisible
 import com.capstone.tanampintar.R
 import com.capstone.tanampintar.data.network.ResultState
 import com.capstone.tanampintar.databinding.ActivityLoginBinding
@@ -53,9 +54,12 @@ class LoginActivity : AppCompatActivity() {
         viewModel.responseResult.observe(this@LoginActivity) { response ->
             when (response) {
                 is ResultState.Loading -> {
-
+                    showLoading()
                 }
                 is ResultState.Error -> {
+                    binding.loading.visibility = View.GONE
+                    binding.register.isEnabled = true
+                    binding.login.isInvisible = false
                     Toast.makeText(
                         this@LoginActivity,
                         response.error,
@@ -71,6 +75,15 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun showLoading() {
+        binding.apply {
+            login.isInvisible = true
+            register.isEnabled = false
+            loading.visibility = View.VISIBLE
+        }
+    }
+
     companion object {
         fun start(context: Context) {
             val starter = Intent(context, LoginActivity::class.java)

@@ -1,5 +1,6 @@
 package com.capstone.tanampintar.ui.register
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,16 +19,30 @@ class RegisterViewModel(
 
     fun submitRegister(name:String,email:String, password:String){
         viewModelScope.launch {
+            _responseResult.value = ResultState.Loading
             try {
-                _responseResult.value = ResultState.Loading
                 val response = userRepository.register(name,email,password)
-                if (!response.status.isNullOrEmpty()) {
+                if (response.status.isNotEmpty()) {
                     _responseResult.value = ResultState.Success(response)
+                }else {
+                    _responseResult.value = ResultState.Error(response.message)
                 }
-            }catch (e: HttpException){
-                val errorBody = e.response()?.errorBody()?.string()
-                _responseResult.value = ResultState.Error(errorBody?:e.message())
+            } catch (e: HttpException) {
+                handleHttpException(e)
+            } catch (e: Exception) {
+                // Handle other exceptions
+                _responseResult.value = ResultState.Error("An unexpected error occurred")
+                // Log the exception for debugging
+                Log.e("LoginViewModel", "Exception during login", e)
             }
         }
+    }
+
+    private fun handleHttpException(e: HttpException) {
+        val errorBody = e.response()?.errorBody()?.string()
+        val errorMessage = errorBody ?: e.message() ?: "Unknown error"
+        _responseResult.value = ResultState.Error(errorMessage)
+        // Log the error for debugging
+        Log.e("LoginViewModel", "HTTP Exception during login", e)
     }
 }
