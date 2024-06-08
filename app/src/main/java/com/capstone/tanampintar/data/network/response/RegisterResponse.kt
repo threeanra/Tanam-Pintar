@@ -11,7 +11,7 @@ data class RegisterResponse(
 	val status: String,
 
 	@field:SerializedName("message")
-	val message: String
+	val message: String? = null
 )
 
 data class Data(

@@ -41,6 +41,7 @@
     <string name="register">Register</string>
     <string name="desc_register">Daftarkan akunmu untuk masuk</string>
     <string name="desc_register2">Sudah punya akun?</string>
+    <string name="email_created">Akun berhasil dibuat</string>
 
     <!--    Detail-->
     <string name="imagedetail">imageDetail</string>

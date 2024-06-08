@@ -32,8 +32,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.register.setOnClickListener {
-            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
-            startActivity(intent)
+            RegisterActivity.start(this@LoginActivity)
+            finish()
         }
 
         binding.login.setOnClickListener {
@@ -87,8 +87,6 @@ class LoginActivity : AppCompatActivity() {
     companion object {
         fun start(context: Context) {
             val starter = Intent(context, LoginActivity::class.java)
-            starter.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-            starter.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
             context.startActivity(starter)
         }
     }

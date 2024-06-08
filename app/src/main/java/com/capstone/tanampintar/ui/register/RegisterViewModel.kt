@@ -24,8 +24,8 @@ class RegisterViewModel(
                 val response = userRepository.register(name,email,password)
                 if (response.status.isNotEmpty()) {
                     _responseResult.value = ResultState.Success(response)
-                }else {
-                    _responseResult.value = ResultState.Error(response.message)
+                } else {
+                    _responseResult.value = ResultState.Error(response.message.orEmpty())
                 }
             } catch (e: HttpException) {
                 handleHttpException(e)
@@ -33,7 +33,7 @@ class RegisterViewModel(
                 // Handle other exceptions
                 _responseResult.value = ResultState.Error("An unexpected error occurred")
                 // Log the exception for debugging
-                Log.e("LoginViewModel", "Exception during login", e)
+                Log.e("RegisterViewModel", "Exception during register", e)
             }
         }
     }
@@ -43,6 +43,6 @@ class RegisterViewModel(
         val errorMessage = errorBody ?: e.message() ?: "Unknown error"
         _responseResult.value = ResultState.Error(errorMessage)
         // Log the error for debugging
-        Log.e("LoginViewModel", "HTTP Exception during login", e)
+        Log.e("RegisterViewModel", "HTTP Exception during login", e)
     }
 }

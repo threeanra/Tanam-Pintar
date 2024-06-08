@@ -52,12 +52,11 @@ class ProfileFragment : Fragment() {
         dialogView.findViewById<Button>(R.id.btnYes).setOnClickListener {
             viewModel.logout()
             LoginActivity.start(requireContext())
-            activity?.finish()
+            requireActivity().finish()
         }
         dialogView.findViewById<Button>(R.id.btnNo).setOnClickListener {
             alertDialog.dismiss()
         }
-
 
         alertDialog.show()
     }
