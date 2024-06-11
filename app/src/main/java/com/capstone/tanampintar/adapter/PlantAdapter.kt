@@ -24,7 +24,6 @@ class PlantAdapter(private val plantList: List<Plant>) :
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.plant_recommendations, parent, false)
         return PlantViewHolder(view)
-
     }
 
     override fun getItemCount() = plantList.size

@@ -8,43 +8,54 @@
     android:background="@color/background_color"
     tools:context=".ui.login.LoginActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="20dp"
-        android:orientation="vertical">
+        android:layout_marginHorizontal="20dp">
 
         <ImageView
+            android:id="@+id/logoApp"
             android:layout_width="300dp"
             android:layout_height="200dp"
+            android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/logo_full"
-            android:layout_gravity="center"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login"
-            android:textSize="23sp"
+            android:layout_gravity="center"
             android:fontFamily="@font/poppins_medium"
+            android:text="@string/login"
+            android:textColor="@color/black"
+            android:textSize="23sp"
             android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textColor="@color/black"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoApp" />
 
         <TextView
+            android:id="@+id/tv_login_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/desc_login"
-            android:textSize="14sp"
             android:fontFamily="@font/poppins_regular"
-            android:textColor="@color/desc"/>
+            android:text="@string/desc_login"
+            android:textColor="@color/desc"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_login" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_login_desc"
             style="@style/customEditText"
             android:layout_marginTop="12dp">
 
@@ -66,6 +77,7 @@
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/emailEditText"
             style="@style/customEditText"
             android:layout_marginTop="12dp">
 
@@ -83,38 +95,36 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <ProgressBar
-            android:id="@+id/loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_gravity="center"
-            android:visibility="gone"
-            android:indeterminateTint="@color/black" />
-
         <Button
             android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
             android:background="@drawable/button_style_1"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/button_login"
             android:textAllCaps="false" />
 
         <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/login"
             android:layout_marginTop="20dp"/>
 
         <TextView
+            android:id="@+id/login_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_regular"
+            android:text="@string/desc_login2"
             android:textColor="@color/desc"
-            android:text="@string/desc_login2"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider" />
 
         <Button
             android:id="@+id/register"
@@ -122,11 +132,25 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@+id/login_desc"
             android:textColor="@color/main_color"
             android:background="@drawable/button_style_2"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/button_register"/>
 
-    </LinearLayout>
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:indeterminateTint="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordEditText"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
