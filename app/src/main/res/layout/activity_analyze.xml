@@ -6,12 +6,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
     tools:context=".ui.analyze.AnalyzeActivity">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/main_color">
 
     <LinearLayout
@@ -26,8 +25,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            app:cardCornerRadius="10dp"
-            android:backgroundTint="@color/white">
+            app:cardCornerRadius="10dp">
 
             <ImageView
                 android:id="@+id/img_back"
@@ -106,7 +104,6 @@
                         android:id="@+id/clear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/white"
                         android:contentDescription="@string/reset"
                         android:src="@drawable/rotate_right_24"
                         app:borderWidth="0dp"
@@ -117,7 +114,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="15dp"
-                        android:backgroundTint="@color/white"
                         android:contentDescription="@string/camera"
                         android:src="@drawable/camera_24"
                         app:borderWidth="0dp"
@@ -127,7 +123,6 @@
                         android:id="@+id/gallery"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/white"
                         android:contentDescription="@string/gallery"
                         android:src="@drawable/add_image_24"
                         app:borderWidth="0dp"
@@ -155,7 +150,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/desc"
             android:text="@string/result_analyze"
             android:textSize="18sp"
             android:layout_marginStart="40dp"

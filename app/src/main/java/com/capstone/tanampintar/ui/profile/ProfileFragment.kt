@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.capstone.tanampintar.R
+import com.capstone.tanampintar.component.PreferencesHelper
 import com.capstone.tanampintar.databinding.FragmentProfileBinding
 import com.capstone.tanampintar.factory.ViewModelFactory
 import com.capstone.tanampintar.ui.login.LoginActivity
@@ -19,9 +22,13 @@ class ProfileFragment : Fragment() {
     private var _profileBinding: FragmentProfileBinding? = null
     private val profileBinding get() = _profileBinding!!
 
-    private val viewModel: AuthViewModel by viewModels<AuthViewModel>{
+    private val viewModel: AuthViewModel by viewModels<AuthViewModel> {
         ViewModelFactory.getInstance(requireActivity())
     }
+
+    private val settingPreferences by viewModels<SettingsViewModel>()
+
+    private lateinit var preferencesHelper: PreferencesHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +36,23 @@ class ProfileFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _profileBinding = FragmentProfileBinding.inflate(inflater, container, false)
+
+        preferencesHelper = PreferencesHelper(requireContext())
+
+
+        settingPreferences.darkMode.observe(viewLifecycleOwner, Observer { isDarkMode ->
+            isDarkMode?.let {
+                setDarkMode(it)
+                profileBinding.switchMode.isChecked = it
+            }
+        })
+
+        profileBinding.switchMode.isChecked = preferencesHelper.getDarkMode()
+
+        profileBinding.switchMode.setOnCheckedChangeListener { _, isChecked ->
+            settingPreferences.setDarkMode(isChecked)
+            preferencesHelper.setDarkMode(isChecked)
+        }
 
         profileBinding.btnLogout.setOnClickListener {
             showLogoutDialog()
@@ -63,6 +87,14 @@ class ProfileFragment : Fragment() {
         }
 
         alertDialog.show()
+    }
+
+    private fun setDarkMode(isEnable: Boolean) {
+        if (isEnable) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
     }
 
     override fun onDestroyView() {
