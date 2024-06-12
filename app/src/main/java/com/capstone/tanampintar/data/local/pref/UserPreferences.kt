@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.capstone.tanampintar.data.local.model.User
 import com.capstone.tanampintar.data.network.retrofit.ApiConfig.removeToken
 import com.capstone.tanampintar.data.network.retrofit.ApiConfig.setToken
 import kotlinx.coroutines.flow.Flow
@@ -15,22 +16,33 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "us
 
 class UserPreferences private constructor(private val dataStore: DataStore<Preferences>) {
 
-    suspend fun saveToken(token: String) {
+    suspend fun saveUser(user : User) {
         dataStore.edit { preferences ->
-            preferences[AUTH] = token
+             preferences[ID_KEY] = user.id
+             preferences[NAME] = user.name
+             preferences[EMAIL] = user.email
+             preferences[AUTH] = user.token
         }
-        setToken(token)
+        setToken(user.token)
     }
 
-    fun getToken(): Flow<String?> {
+    fun getUser(): Flow<User> {
         return dataStore.data.map { preferences ->
-            preferences[AUTH]
+            User(
+                preferences[ID_KEY] ?: "",
+                preferences[NAME] ?: "John Doe",
+                preferences[EMAIL]  ?: "",
+                preferences[AUTH] ?: ""
+            )
         }
     }
 
     suspend fun clearToken() {
         dataStore.edit { preferences ->
-            preferences.remove(AUTH)
+            preferences[ID_KEY] = ""
+            preferences[NAME] = ""
+            preferences[EMAIL] = ""
+            preferences[AUTH] = ""
         }
         removeToken()
     }
@@ -38,6 +50,9 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
     companion object {
         @Volatile
         private var INSTANCE: UserPreferences? = null
+        private val ID_KEY = stringPreferencesKey("id")
+        private val NAME = stringPreferencesKey("name")
+        private val EMAIL = stringPreferencesKey("email")
         private val AUTH = stringPreferencesKey("token")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreferences {

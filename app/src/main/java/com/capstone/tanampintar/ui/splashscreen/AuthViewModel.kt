@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.capstone.tanampintar.data.local.model.User
 import com.capstone.tanampintar.data.local.pref.UserPreferences
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -16,7 +17,7 @@ class AuthViewModel(
     private val pref: UserPreferences
 ): ViewModel(){
 
-    fun getToken() = pref.getToken().asLiveData()
+    fun getUser(): LiveData<User> = pref.getUser().asLiveData()
 
     fun logout(){
         viewModelScope.launch {

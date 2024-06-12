@@ -34,6 +34,10 @@ class ProfileFragment : Fragment() {
             showLogoutDialog()
         }
 
+        viewModel.getUser().observe(viewLifecycleOwner) {
+            profileBinding.nameProfile.text = it.name
+            profileBinding.emailProfile.text = it.email
+        }
 
         return profileBinding.root
 //        return inflater.inflate(R.layout.fragment_profile, container, false)

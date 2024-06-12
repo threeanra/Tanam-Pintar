@@ -5,17 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isInvisible
-import com.capstone.tanampintar.R
 import com.capstone.tanampintar.data.network.ResultState
 import com.capstone.tanampintar.databinding.ActivityLoginBinding
-import com.capstone.tanampintar.databinding.ActivityMainBinding
 import com.capstone.tanampintar.factory.ViewModelFactory
+import com.capstone.tanampintar.repository.UserRepository
 import com.capstone.tanampintar.ui.MainActivity
 import com.capstone.tanampintar.ui.register.RegisterActivity
 
@@ -83,6 +79,7 @@ class LoginActivity : AppCompatActivity() {
             loading.visibility = View.VISIBLE
         }
     }
+
 
     companion object {
         fun start(context: Context) {

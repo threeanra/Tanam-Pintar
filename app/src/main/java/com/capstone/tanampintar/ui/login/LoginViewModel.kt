@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.capstone.tanampintar.data.local.model.User
 import com.capstone.tanampintar.data.network.ResultState
 import com.capstone.tanampintar.data.network.response.LoginResponse
 import com.capstone.tanampintar.repository.UserRepository
@@ -18,13 +19,21 @@ class LoginViewModel(
     private val _responseResult = MutableLiveData<ResultState<LoginResponse>>()
     val responseResult: LiveData<ResultState<LoginResponse>> = _responseResult
 
+
     fun submitLogin(email: String, password: String) {
         viewModelScope.launch {
             _responseResult.value = ResultState.Loading
             try {
                 val response = userRepository.login(email, password)
                 if (response.data?.token?.isNotEmpty() == true) {
-                    userRepository.saveToken(response.data.token)
+                    userRepository.saveUser(
+                        User(
+                            response.data.id,
+                            response.data.name,
+                            email,
+                            response.data.token
+                        )
+                    )
                     _responseResult.value = ResultState.Success(response)
                 } else {
                     _responseResult.value = ResultState.Error(response.message.orEmpty())
@@ -39,6 +48,7 @@ class LoginViewModel(
             }
         }
     }
+
 
     private fun handleHttpException(e: HttpException) {
         val errorBody = e.response()?.errorBody()?.string()

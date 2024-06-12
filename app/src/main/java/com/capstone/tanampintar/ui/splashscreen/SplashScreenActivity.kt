@@ -32,7 +32,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed(
             {
-                viewModel.getToken().observe(this) { token ->
+                viewModel.getUser().observe(this) { token ->
                     val intentActivity = Intent(
                         this,
                         if (token == null) LoginActivity::class.java else MainActivity::class.java
