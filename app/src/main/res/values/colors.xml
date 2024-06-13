@@ -3,10 +3,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="main_color">#4CAF50</color>
+    <color name="main_color">#00A900</color>
     <color name="main_color_variant">#388E3C</color>
     <color name="secondary_color">#81C784</color>
-    <color name="background_color">#F5F5F7</color>
+    <color name="background_color">#EBEBEB</color>
     <color name="text_color_primary">#000000</color>
     <color name="text_color_secondary">#757575</color>
 

@@ -2,6 +2,7 @@ package com.capstone.tanampintar.data.network.retrofit
 
 import com.capstone.tanampintar.data.network.response.DetailSoilResponse
 import com.capstone.tanampintar.data.network.response.LoginResponse
+import com.capstone.tanampintar.data.network.response.PlantResponse
 import com.capstone.tanampintar.data.network.response.RegisterResponse
 import com.capstone.tanampintar.data.network.response.Soil
 import com.capstone.tanampintar.data.network.response.SoilResponse
@@ -35,5 +36,8 @@ interface ApiService {
     suspend fun getDetailSoil(
         @Path("id") id: String
     ): DetailSoilResponse
+
+    @GET("plants")
+    suspend fun getPlant(): PlantResponse
 
 }

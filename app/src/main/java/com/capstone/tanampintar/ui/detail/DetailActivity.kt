@@ -2,34 +2,24 @@ package com.capstone.tanampintar.ui.detail
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.WindowManager.LayoutParams.*
-import android.widget.GridView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.capstone.tanampintar.R
-import com.capstone.tanampintar.adapter.Plant
 import com.capstone.tanampintar.adapter.PlantAdapter
 import com.capstone.tanampintar.data.network.ResultState
 import com.capstone.tanampintar.data.network.response.DetailSoilResponse
+import com.capstone.tanampintar.data.network.response.PlantResponse
 import com.capstone.tanampintar.data.network.response.SoilResponse
 import com.capstone.tanampintar.databinding.ActivityDetailBinding
 import com.capstone.tanampintar.factory.ViewModelFactory
-import com.capstone.tanampintar.ui.MainActivity
-import com.capstone.tanampintar.ui.home.HomeViewModel
 
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
 
-    private val soilViewModel: DetailViewModel by viewModels<DetailViewModel>{
+    private val viewModel: DetailViewModel by viewModels<DetailViewModel>{
         ViewModelFactory.getInstance(this)
     }
 
@@ -44,30 +34,14 @@ class DetailActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
             finish()
         }
-
-        binding.plantList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
-        val plantList = listOf(
-            Plant("Anggur", R.drawable.image_detail),
-            Plant("Tomat", R.drawable.image_preview),
-            Plant("Anggur", R.drawable.image_preview),
-            Plant("Tomat", R.drawable.image_preview),
-            Plant("Anggur", R.drawable.image_preview),
-            Plant("Tomat", R.drawable.image_preview),
-            Plant("Anggur", R.drawable.image_preview),
-            Plant("Tomat", R.drawable.image_preview),
-        )
-
-        val adapter = PlantAdapter(plantList)
-        binding.plantList.adapter = adapter
     }
 
     private fun setupViewModel() {
         val id = intent.getStringExtra(SOIL_ID)
         if (id != null) {
-            soilViewModel.getDetailSoil(id)
+            viewModel.getDetailSoil(id)
         }
-        soilViewModel.detailSoil.observe(this){
+        viewModel.detailSoil.observe(this){
                 soil ->
             when(soil){
                 is ResultState.Loading -> {
@@ -80,6 +54,22 @@ class DetailActivity : AppCompatActivity() {
                 }
             }
         }
+
+        viewModel.plant.observe(this){
+                plant ->
+            when(plant){
+                is ResultState.Loading -> {
+                }
+                is ResultState.Success -> {
+                    setupRecyclerView(plant.data, id!!)
+                }
+                is ResultState.Error -> {
+                    Toast.makeText(this, plant.error, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+
     }
 
     private fun setupView(soil : DetailSoilResponse){
@@ -91,6 +81,17 @@ class DetailActivity : AppCompatActivity() {
                     .load(soil.data.imageUrl)
                     .into(imgDetail)
             }
+        }
+    }
+
+    private fun setupRecyclerView(plantResponse: PlantResponse, soilId: String) {
+        // Find the Plant object with the specified ID
+        val matchingPlants = plantResponse.plant.filter { it.soilType == soilId }
+        if (matchingPlants.isNotEmpty()) {
+            // You have matching plants, now you can display them in the RecyclerView
+            binding.plantList.layoutManager =  LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            val adapter = PlantAdapter(matchingPlants)
+            binding.plantList.adapter = adapter
         }
     }
 

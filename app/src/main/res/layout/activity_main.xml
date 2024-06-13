@@ -41,6 +41,7 @@
             android:contentDescription="@string/app_name"
             android:src="@drawable/camera_24"
             app:maxImageSize="32dp"
+            android:backgroundTint="@color/main_color"
             app:borderWidth="0dp"
             app:layout_anchor="@id/bottomAppBar" />
 
