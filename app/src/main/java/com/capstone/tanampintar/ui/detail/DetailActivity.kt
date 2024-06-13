@@ -45,4 +45,8 @@ class DetailActivity : AppCompatActivity() {
         val adapter = PlantAdapter(plantList)
         binding.plantList.adapter = adapter
     }
+
+    companion object {
+        const val SOIL_ID = "soil_id"
+    }
 }
