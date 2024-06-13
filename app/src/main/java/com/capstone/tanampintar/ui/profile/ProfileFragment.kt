@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.capstone.tanampintar.R
-import com.capstone.tanampintar.component.PreferencesHelper
+import com.capstone.tanampintar.data.local.pref.PreferencesHelper
 import com.capstone.tanampintar.databinding.FragmentProfileBinding
 import com.capstone.tanampintar.factory.ViewModelFactory
 import com.capstone.tanampintar.ui.login.LoginActivity
