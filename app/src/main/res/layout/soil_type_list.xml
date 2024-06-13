@@ -28,7 +28,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:minHeight="13dp"
-            android:textColor="@color/white"
             android:text="@string/soil_type"
             android:fontFamily="@font/poppins_medium"
             android:layout_gravity="center"

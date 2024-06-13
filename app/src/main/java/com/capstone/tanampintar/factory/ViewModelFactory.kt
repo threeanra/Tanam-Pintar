@@ -8,6 +8,7 @@ import com.capstone.tanampintar.data.local.pref.UserPreferences
 import com.capstone.tanampintar.data.local.pref.dataStore
 import com.capstone.tanampintar.repository.SoilRepository
 import com.capstone.tanampintar.repository.UserRepository
+import com.capstone.tanampintar.ui.detail.DetailViewModel
 import com.capstone.tanampintar.ui.home.HomeViewModel
 import com.capstone.tanampintar.ui.login.LoginViewModel
 import com.capstone.tanampintar.ui.register.RegisterViewModel
@@ -34,6 +35,9 @@ class ViewModelFactory private constructor(
             }
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(soilRepository) as T
+            }
+            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
+                DetailViewModel(soilRepository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

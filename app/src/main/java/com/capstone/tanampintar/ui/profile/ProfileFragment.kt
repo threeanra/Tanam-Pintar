@@ -9,7 +9,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.capstone.tanampintar.R
 import com.capstone.tanampintar.component.PreferencesHelper
 import com.capstone.tanampintar.databinding.FragmentProfileBinding
@@ -39,13 +38,12 @@ class ProfileFragment : Fragment() {
 
         preferencesHelper = PreferencesHelper(requireContext())
 
-
-        settingPreferences.darkMode.observe(viewLifecycleOwner, Observer { isDarkMode ->
+        settingPreferences.darkMode.observe(viewLifecycleOwner) { isDarkMode ->
             isDarkMode?.let {
                 setDarkMode(it)
                 profileBinding.switchMode.isChecked = it
             }
-        })
+        }
 
         profileBinding.switchMode.isChecked = preferencesHelper.getDarkMode()
 
@@ -58,13 +56,12 @@ class ProfileFragment : Fragment() {
             showLogoutDialog()
         }
 
-        viewModel.getUser().observe(viewLifecycleOwner) {
-            profileBinding.nameProfile.text = it.name
-            profileBinding.emailProfile.text = it.email
+        viewModel.getUser().observe(viewLifecycleOwner) { user ->
+            profileBinding.nameProfile.text = user.name
+            profileBinding.emailProfile.text = user.email
         }
 
         return profileBinding.root
-//        return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
     private fun showLogoutDialog() {
