@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.capstone.tanampintar.data.di.Injection
 import com.capstone.tanampintar.data.local.pref.UserPreferences
 import com.capstone.tanampintar.data.local.pref.dataStore
+import com.capstone.tanampintar.repository.SoilRepository
 import com.capstone.tanampintar.repository.UserRepository
+import com.capstone.tanampintar.ui.home.HomeViewModel
 import com.capstone.tanampintar.ui.login.LoginViewModel
 import com.capstone.tanampintar.ui.register.RegisterViewModel
 import com.capstone.tanampintar.ui.splashscreen.AuthViewModel
@@ -14,6 +16,7 @@ import com.capstone.tanampintar.ui.splashscreen.AuthViewModel
 
 class ViewModelFactory private constructor(
     private val userRepository: UserRepository,
+    private val soilRepository: SoilRepository,
     private val pref: UserPreferences
 ) : ViewModelProvider.NewInstanceFactory() {
 
@@ -29,6 +32,9 @@ class ViewModelFactory private constructor(
             modelClass.isAssignableFrom(AuthViewModel::class.java) -> {
                 AuthViewModel(pref) as T
             }
+            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+                HomeViewModel(soilRepository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
@@ -38,7 +44,7 @@ class ViewModelFactory private constructor(
         private var instance: ViewModelFactory? = null
         fun getInstance(context: Context): ViewModelFactory =
             instance ?: synchronized(this) {
-                instance ?: ViewModelFactory(Injection.provideRepository(context), pref = UserPreferences.getInstance(context.dataStore))
+                instance ?: ViewModelFactory(Injection.getAuthRepository(context), Injection.getSoilRepository(context), pref = UserPreferences.getInstance(context.dataStore))
             }.also { instance = it }
     }
 }
