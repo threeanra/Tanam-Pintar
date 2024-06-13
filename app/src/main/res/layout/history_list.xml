@@ -36,7 +36,6 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="@string/title_history"
-                android:textColor="@color/black"
                 android:fontFamily="@font/poppins_medium"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -50,7 +49,6 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="@string/time_history"
-                android:textColor="@color/desc"
                 android:textSize="12sp" />
 
 

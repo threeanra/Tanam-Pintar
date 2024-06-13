@@ -3,10 +3,23 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="main_color">#4CAF50</color>
+    <color name="main_color_variant">#388E3C</color>
+    <color name="secondary_color">#81C784</color>
+    <color name="background_color">#FFFFFF</color>
+    <color name="text_color_primary">#000000</color>
+    <color name="text_color_secondary">#757575</color>
+
 <!--    <color name="main_color">#DF635A</color>-->
-    <color name="main_color">#00A900</color>
-    <color name="background_color">#F5F5F7</color>
-    <color name="transparan">#32FFFFFF</color>
-    <color name="desc">#95959F</color>
-    <color name="edit_text">#A4A4AB</color>
+<!--    <color name="main_color">#00A900</color>-->
+<!--    <color name="background_color">#F5F5F7</color>-->
+<!--    <color name="transparan">#32FFFFFF</color>-->
+<!--    <color name="desc">#95959F</color>-->
+<!--    <color name="edit_text">#A4A4AB</color>-->
+
+<!--    <color name="green_primary">#388E3C</color>-->
+<!--    <color name="green_primary_variant">#2E7D32</color>-->
+<!--    <color name="green_secondary">#8BC34A</color>-->
+<!--    <color name="green_secondary_variant">#689F38</color>-->
+<!--&lt;!&ndash;    <color name="white">#FFFFFF</color>&ndash;&gt;-->
 </resources>

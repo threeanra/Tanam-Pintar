@@ -13,7 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/main_color"
         android:paddingBottom="12dp">
 
         <ImageView
@@ -30,7 +29,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:minHeight="13dp"
-            android:textColor="@color/white"
             android:text="@string/plant_name"
             android:fontFamily="@font/poppins_medium"
             android:layout_gravity="center"
