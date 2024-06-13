@@ -1,4 +1,4 @@
-package com.capstone.tanampintar.component
+package com.capstone.tanampintar.data.local.pref
 
 import android.content.Context
 import android.content.SharedPreferences
