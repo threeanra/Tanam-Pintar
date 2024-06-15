@@ -23,6 +23,7 @@
         android:layout_marginBottom="15dp"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/splash_screen"
+        android:textColor="@color/text_color_primary"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

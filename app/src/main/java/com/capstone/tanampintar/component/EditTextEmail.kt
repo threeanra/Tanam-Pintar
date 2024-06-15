@@ -33,12 +33,13 @@ class EditTextEmail : AppCompatEditText {
             override fun afterTextChanged(s: Editable) {
                 // Email validation
                 // Display error automatically if the email is not valid
-                error = if (s.isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(s).matches()){
+                error = if (s.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(s).matches()) {
                     null
                 } else {
                     context.getString(R.string.email_error_message)
                 }
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
     }
