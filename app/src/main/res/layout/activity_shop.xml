@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/history_card_title"
+            android:text="Belanja"
             android:textSize="16sp"
             android:textColor="@color/white"
             android:layout_gravity="center"
@@ -50,13 +50,56 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="80dp">
 
+        <TextView
+            android:id="@+id/titleTools"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Peralatan"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/poppins_medium"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvHistory"
+            android:id="@+id/rvTools"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            tools:listitem="@layout/history_list"/>
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/titleTools"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/shop_list" />
+
+        <TextView
+            android:id="@+id/titlePlants"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Pupuk"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/poppins_medium"
+            app:layout_constraintTop_toBottomOf="@id/rvTools" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFertilizer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/titlePlants"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/shop_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
