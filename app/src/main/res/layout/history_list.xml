@@ -15,17 +15,17 @@
 
         <ImageView
             android:id="@+id/imagePlace"
-            android:src="@drawable/image_preview"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:adjustViewBounds="true" />
+            android:src="@drawable/image_preview" />
 
         <LinearLayout
-            android:layout_marginLeft="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
             android:layout_toEndOf="@id/imagePlace"
             android:orientation="vertical">
 
@@ -34,9 +34,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
+                android:fontFamily="@font/poppins_medium"
                 android:maxLines="1"
                 android:text="@string/title_history"
-                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/text_color_primary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -45,10 +46,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:fontFamily="@font/poppins_medium"
                 android:ellipsize="end"
+                android:fontFamily="@font/poppins_medium"
                 android:maxLines="1"
                 android:text="@string/time_history"
+                android:textColor="@color/text_color_primary"
                 android:textSize="12sp" />
 
 
