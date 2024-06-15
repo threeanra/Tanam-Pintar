@@ -25,7 +25,9 @@ class ProfileFragment : Fragment() {
         ViewModelFactory.getInstance(requireActivity())
     }
 
-    private val settingPreferences by viewModels<SettingsViewModel>()
+    private val settingPreferences by viewModels<SettingsViewModel> {
+        ViewModelFactory.getInstance(requireActivity())
+    }
 
     private lateinit var preferencesHelper: PreferencesHelper
 

@@ -10,6 +10,8 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import com.capstone.tanampintar.data.local.pref.PreferencesHelper
 import com.capstone.tanampintar.databinding.ActivitySplashScreenBinding
 import com.capstone.tanampintar.factory.ViewModelFactory
 import com.capstone.tanampintar.ui.MainActivity
@@ -25,10 +27,19 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivitySplashScreenBinding
+    private lateinit var preferencesHelper: PreferencesHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        preferencesHelper = PreferencesHelper.getInstance(this)
+
+        if (preferencesHelper.getDarkMode()) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
 
         Handler(Looper.getMainLooper()).postDelayed(
             {
