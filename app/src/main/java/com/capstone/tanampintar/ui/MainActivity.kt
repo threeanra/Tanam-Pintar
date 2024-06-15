@@ -6,10 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.capstone.tanampintar.R
+import com.capstone.tanampintar.data.local.pref.PreferencesHelper
 import com.capstone.tanampintar.databinding.ActivityMainBinding
 import com.capstone.tanampintar.ui.analyze.AnalyzeActivity
 
-class  MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
