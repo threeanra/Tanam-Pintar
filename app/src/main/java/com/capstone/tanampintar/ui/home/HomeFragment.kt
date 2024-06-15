@@ -14,9 +14,9 @@ import com.capstone.tanampintar.data.network.ResultState
 import com.capstone.tanampintar.data.network.response.SoilResponse
 import com.capstone.tanampintar.databinding.FragmentHomeBinding
 import com.capstone.tanampintar.factory.ViewModelFactory
-import com.capstone.tanampintar.ui.detail.DetailActivity
 import com.capstone.tanampintar.ui.history.HistoryActivity
 import com.capstone.tanampintar.ui.login.LoginActivity
+import com.capstone.tanampintar.ui.shop.ShopActivity
 import com.capstone.tanampintar.ui.splashscreen.AuthViewModel
 
 class HomeFragment : Fragment() {
@@ -28,7 +28,6 @@ class HomeFragment : Fragment() {
     private val soilViewModel: HomeViewModel by viewModels<HomeViewModel>{
         ViewModelFactory.getInstance(requireContext())
     }
-
 
     private var _homeBinding: FragmentHomeBinding? = null
     private val homeBinding get() = _homeBinding!!
@@ -44,8 +43,8 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        homeBinding.reminderCard.setOnClickListener {
-            val intent = Intent(requireContext(), DetailActivity::class.java)
+        homeBinding.shopCard.setOnClickListener {
+            val intent = Intent(requireContext(), ShopActivity::class.java)
             startActivity(intent)
         }
 
