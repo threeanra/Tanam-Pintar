@@ -69,9 +69,6 @@ class HomeFragment : Fragment() {
                 }
 
                 is ResultState.Error -> {
-//                    binding.loading.visibility = View.GONE
-//                    binding.register.isEnabled = true
-//                    binding.login.isInvisible = false
                     Toast.makeText(
                         requireContext(),
                         response.error,

@@ -50,7 +50,7 @@
                         android:fontFamily="@font/poppins_regular"
                         android:text="@string/greeting"
                         android:textColor="@color/white"
-                        android:textSize="16sp" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/fullname"
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="20dp"
+                android:layout_marginVertical="10dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:cardUseCompatPadding="true">
@@ -119,6 +119,160 @@
 
             </androidx.cardview.widget.CardView>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:weightSum="2"
+                android:layout_marginBottom="10dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/historyCard"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:background="@color/white"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/imageCard"
+                            android:layout_width="58dp"
+                            android:layout_height="57dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="12dp"
+                            android:layout_marginRight="12dp"
+                            android:layout_marginBottom="12dp"
+                            android:elevation="0dp"
+                            app:cardCornerRadius="20dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/history" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:id="@+id/textCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_toEndOf="@id/imageCard"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/historyCardTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/poppins_regular"
+                                android:maxLines="1"
+                                android:text="Riwayat"
+                                android:textColor="@color/text_color_primary"
+                                android:textSize="14sp" />
+
+
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_alignEnd="@+id/textCard"
+                            android:layout_centerInParent="true"
+                            android:layout_marginEnd="5dp"
+                            android:rotation="180"
+                            android:src="@drawable/back_button" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/reminderCard"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@color/white"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/historyImage"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_margin="12dp"
+                            android:elevation="0dp"
+                            app:cardCornerRadius="20dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/cart" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:id="@+id/textCardReminder"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_toEndOf="@id/historyImage"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/reminderCardTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/poppins_regular"
+                                android:maxLines="1"
+                                android:text="Belanja"
+                                android:textColor="@color/text_color_primary"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_alignEnd="@+id/textCardReminder"
+                            android:layout_centerInParent="true"
+                            android:layout_marginEnd="5dp"
+                            android:rotation="180"
+                            android:src="@drawable/back_button" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/soilTypeTitle"
                 android:layout_width="wrap_content"
@@ -139,172 +293,6 @@
                 android:overScrollMode="never"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 tools:listitem="@layout/soil_type_list" />
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/historyCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="8dp"
-                android:background="@color/white"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="0dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp">
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/imageCard"
-                        android:layout_width="58dp"
-                        android:layout_height="57dp"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginLeft="12dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginRight="12dp"
-                        android:layout_marginBottom="12dp"
-                        android:elevation="0dp"
-                        app:cardCornerRadius="20dp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/history" />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <LinearLayout
-                        android:id="@+id/textCard"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_toEndOf="@id/imageCard"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/historyCardTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:fontFamily="@font/poppins_regular"
-                            android:maxLines="1"
-                            android:text="@string/history_card_title"
-                            android:textColor="@color/text_color_primary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/descCardTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:ellipsize="end"
-                            android:fontFamily="@font/poppins_regular"
-                            android:maxLines="1"
-                            android:text="@string/desc_card"
-                            android:textColor="@color/text_color_secondary"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
-
-                    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_alignEnd="@+id/textCard"
-                        android:layout_centerInParent="true"
-                        android:layout_marginEnd="5dp"
-                        android:rotation="180"
-                        android:src="@drawable/back_button" />
-
-                </RelativeLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/reminderCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="8dp"
-                android:background="@color/white"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="0dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp">
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/historyImage"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_margin="12dp"
-                        android:elevation="0dp"
-                        app:cardCornerRadius="20dp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/reminder" />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <LinearLayout
-                        android:id="@+id/textCardReminder"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_toEndOf="@id/historyImage"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/reminderCardTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:fontFamily="@font/poppins_regular"
-                            android:maxLines="1"
-                            android:text="@string/reminder_card_title"
-                            android:textColor="@color/text_color_primary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/descReminderCard"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:ellipsize="end"
-                            android:fontFamily="@font/poppins_regular"
-                            android:maxLines="1"
-                            android:text="@string/desc_card"
-                            android:textColor="@color/text_color_secondary"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
-
-                    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_alignEnd="@+id/textCardReminder"
-                        android:layout_centerInParent="true"
-                        android:layout_marginEnd="5dp"
-                        android:rotation="180"
-                        android:src="@drawable/back_button" />
-
-                </RelativeLayout>
-
-            </androidx.cardview.widget.CardView>
-
 
         </LinearLayout>
 

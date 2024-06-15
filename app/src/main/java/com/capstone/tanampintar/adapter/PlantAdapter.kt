@@ -25,16 +25,10 @@ class PlantAdapter(
 
     class MyViewHolder(private val binding: PlantRecommendationsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(plant: Plant){
-            if(plant.soilType == SOIL_ID){
-                binding.plantTitle.text = plant.plantName
-                Glide.with(binding.plantImage.context)
-                    .load(plant.imageUrl)
-                    .into(binding.plantImage)
-            }
+            binding.plantTitle.text = plant.plantName
+            Glide.with(binding.plantImage.context)
+                .load(plant.imageUrl)
+                .into(binding.plantImage)
         }
-    }
-
-    companion object {
-        const val SOIL_ID = "soil_id"
     }
 }

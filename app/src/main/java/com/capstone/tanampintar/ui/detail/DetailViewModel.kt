@@ -6,8 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.capstone.tanampintar.data.network.ResultState
 import com.capstone.tanampintar.data.network.response.DetailSoilResponse
 import com.capstone.tanampintar.data.network.response.PlantResponse
-import com.capstone.tanampintar.data.network.response.Soil
-import com.capstone.tanampintar.data.network.response.SoilResponse
 import com.capstone.tanampintar.repository.PlantRepository
 import com.capstone.tanampintar.repository.SoilRepository
 import kotlinx.coroutines.launch
@@ -21,7 +19,7 @@ class DetailViewModel(private val soilRepository: SoilRepository, private val pl
         getPlants()
     }
 
-    fun getPlants(){
+    private fun getPlants(){
         viewModelScope.launch {
             plantRepository.getPlant()
         }

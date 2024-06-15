@@ -1,6 +1,5 @@
 package com.capstone.tanampintar.ui.detail
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -11,7 +10,6 @@ import com.capstone.tanampintar.adapter.PlantAdapter
 import com.capstone.tanampintar.data.network.ResultState
 import com.capstone.tanampintar.data.network.response.DetailSoilResponse
 import com.capstone.tanampintar.data.network.response.PlantResponse
-import com.capstone.tanampintar.data.network.response.SoilResponse
 import com.capstone.tanampintar.databinding.ActivityDetailBinding
 import com.capstone.tanampintar.factory.ViewModelFactory
 
@@ -68,19 +66,15 @@ class DetailActivity : AppCompatActivity() {
                 }
             }
         }
-
-
     }
 
     private fun setupView(soil : DetailSoilResponse){
-        if (soil != null) {
-            binding.apply {
-                textTitle.text = soil.data!!.soilName
-                textDescription.text = soil.data.description
-                Glide.with(this@DetailActivity)
-                    .load(soil.data.imageUrl)
-                    .into(imgDetail)
-            }
+        binding.apply {
+            textTitle.text = soil.data!!.soilName
+            textDescription.text = soil.data.description
+            Glide.with(this@DetailActivity)
+                .load(soil.data.imageUrl)
+                .into(imgDetail)
         }
     }
 
@@ -88,7 +82,6 @@ class DetailActivity : AppCompatActivity() {
         // Find the Plant object with the specified ID
         val matchingPlants = plantResponse.plant.filter { it.soilType == soilId }
         if (matchingPlants.isNotEmpty()) {
-            // You have matching plants, now you can display them in the RecyclerView
             binding.plantList.layoutManager =  LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
             val adapter = PlantAdapter(matchingPlants)
             binding.plantList.adapter = adapter
