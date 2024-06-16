@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_color">
@@ -70,7 +71,8 @@
                         android:id="@+id/imageMode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/baseline_dark_mode_24" />
+                        android:src="@drawable/moon_stars_24"
+                        style="@style/IconTint" />
 
                     <TextView
                         android:id="@+id/darkMode"
@@ -120,13 +122,13 @@
                         android:id="@+id/imagePersonProfile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/baseline_person_24" />
+                        android:src="@drawable/user_24"
+                        style="@style/IconTint" />
 
                     <TextView
                         android:id="@+id/profileDetails"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
                         android:layout_marginStart="20dp"
                         android:layout_toEndOf="@id/imagePersonProfile"
                         android:ellipsize="end"
@@ -138,11 +140,12 @@
 
                     <ImageView
                         android:id="@+id/imageArrowProfile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="5dp"
-                        android:src="@drawable/baseline_arrow_forward_ios_24" />
+                        android:rotation="180"
+                        android:src="@drawable/back_button" />
 
                 </RelativeLayout>
 
@@ -172,7 +175,8 @@
                         android:id="@+id/imageSettings"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/baseline_settings_24" />
+                        android:src="@drawable/info_24"
+                        style="@style/IconTint" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -183,17 +187,18 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/poppins_bold"
                         android:maxLines="1"
-                        android:text="@string/settings"
+                        android:text="@string/about_us"
                         android:textColor="@color/text_color_primary"
                         android:textSize="14sp" />
 
                     <ImageView
                         android:id="@+id/imageArrowSettings"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="5dp"
-                        android:src="@drawable/baseline_arrow_forward_ios_24" />
+                        android:rotation="180"
+                        android:src="@drawable/back_button"/>
 
                 </RelativeLayout>
 
@@ -208,6 +213,8 @@
 
             <Button
                 android:id="@+id/btn_logout"
+                android:background="@drawable/button_style_4"
+                app:backgroundTint="@null"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"

@@ -56,10 +56,10 @@
     <string name="nameProfile">Your Name</string>
     <string name="emailProfile">youremail@email.com</string>
     <string name="dark_mode">Dark Mode</string>
-    <string name="profile_detail">Profile Detail</string>
-    <string name="settings">Settings</string>
-    <string name="logout">Logout</string>
-    <string name="message_dialog">Apakah anda yakin ingin logout?</string>
+    <string name="about_us">Tentang Kami</string>
+    <string name="profile_detail">Ubah Profil</string>
+    <string name="logout">Keluar</string>
+    <string name="message_dialog">Apakah anda yakin ingin keluar?</string>
     <string name="no">Tidak</string>
     <string name="yes">Iya</string>
 

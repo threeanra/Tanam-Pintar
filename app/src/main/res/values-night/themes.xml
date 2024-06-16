@@ -15,4 +15,8 @@
     </style>
 
     <style name="Theme.TanamPintar" parent="Base.Theme.TanamPintar" />
+
+    <style name="IconTint" >
+        <item name="android:tint">@color/white</item>
+    </style>
 </resources>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
@@ -47,15 +48,19 @@ class ProfileFragment : Fragment() {
             }
         }
 
-        profileBinding.switchMode.isChecked = preferencesHelper.getDarkMode()
+        profileBinding.apply {
+            switchMode.isChecked = preferencesHelper.getDarkMode()
+            switchMode.setOnCheckedChangeListener { _, isChecked ->
+                settingPreferences.setDarkMode(isChecked)
+                preferencesHelper.setDarkMode(isChecked)
+            }
+            btnLogout.setOnClickListener {
+                showLogoutDialog()
+            }
 
-        profileBinding.switchMode.setOnCheckedChangeListener { _, isChecked ->
-            settingPreferences.setDarkMode(isChecked)
-            preferencesHelper.setDarkMode(isChecked)
-        }
-
-        profileBinding.btnLogout.setOnClickListener {
-            showLogoutDialog()
+            viewProfile.setOnClickListener {
+                Toast.makeText(requireContext(), "Fitur yang akan datang", Toast.LENGTH_SHORT).show()
+            }
         }
 
         viewModel.getUser().observe(viewLifecycleOwner) { user ->
@@ -67,20 +72,22 @@ class ProfileFragment : Fragment() {
     }
 
     private fun showLogoutDialog() {
-        val dialogView =
-            LayoutInflater.from(this.requireActivity()).inflate(R.layout.alert_dialog, null)
+        val dialogView = LayoutInflater.from(requireActivity()).inflate(R.layout.alert_dialog, null)
 
-        val builder = AlertDialog.Builder(this.requireActivity())
+        val builder = AlertDialog.Builder(requireActivity())
             .setView(dialogView)
             .setCancelable(false)
 
         val alertDialog = builder.create()
+        alertDialog.window?.setBackgroundDrawableResource(android.R.color.transparent) //to make alert dialog rounded corner
 
         dialogView.findViewById<Button>(R.id.btnYes).setOnClickListener {
             viewModel.logout()
             LoginActivity.start(requireContext())
             requireActivity().finish()
+            alertDialog.dismiss()
         }
+
         dialogView.findViewById<Button>(R.id.btnNo).setOnClickListener {
             alertDialog.dismiss()
         }
