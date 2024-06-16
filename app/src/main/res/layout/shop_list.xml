@@ -16,7 +16,7 @@
 
         <ImageView
             android:id="@+id/stuffImage"
-            android:layout_width="130dp"
+            android:layout_width="145dp"
             android:layout_height="120dp"
             android:scaleType="centerCrop"
             android:src="@drawable/image_preview" />
