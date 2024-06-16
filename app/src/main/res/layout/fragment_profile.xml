@@ -159,7 +159,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/viewSettings"
+                android:id="@+id/viewAboutUs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -222,7 +222,7 @@
                 android:text="@string/logout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/viewSettings" />
+                app:layout_constraintTop_toBottomOf="@id/viewAboutUs" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

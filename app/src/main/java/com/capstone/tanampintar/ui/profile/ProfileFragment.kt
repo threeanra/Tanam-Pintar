@@ -1,5 +1,6 @@
 package com.capstone.tanampintar.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.capstone.tanampintar.R
 import com.capstone.tanampintar.data.local.pref.PreferencesHelper
 import com.capstone.tanampintar.databinding.FragmentProfileBinding
 import com.capstone.tanampintar.factory.ViewModelFactory
+import com.capstone.tanampintar.ui.aboutus.AboutUsActivity
 import com.capstone.tanampintar.ui.login.LoginActivity
 import com.capstone.tanampintar.ui.splashscreen.AuthViewModel
 
@@ -60,6 +62,10 @@ class ProfileFragment : Fragment() {
 
             viewProfile.setOnClickListener {
                 Toast.makeText(requireContext(), "Fitur yang akan datang", Toast.LENGTH_SHORT).show()
+            }
+            viewAboutUs.setOnClickListener {
+                val intent = Intent(requireContext(), AboutUsActivity::class.java)
+                startActivity(intent)
             }
         }
 
