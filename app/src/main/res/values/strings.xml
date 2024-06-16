@@ -50,6 +50,7 @@
     <string name="description">Description</string>
     <string name="plant_name">Nama Tanaman</string>
     <string name="imageplant">imagePlant</string>
+    <string name="recommendation">Rekomendasi Tanaman</string>
 
     <!--    Profile-->
     <string name="imageprofile">imagePerson</string>
