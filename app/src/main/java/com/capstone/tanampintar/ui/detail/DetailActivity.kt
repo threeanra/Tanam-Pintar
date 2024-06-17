@@ -39,7 +39,6 @@ class DetailActivity : AppCompatActivity() {
         if (id != null) {
             viewModel.getDetailSoil(id)
         }
-
         viewModel.detailSoil.observe(this){
                 soil ->
             when(soil){
