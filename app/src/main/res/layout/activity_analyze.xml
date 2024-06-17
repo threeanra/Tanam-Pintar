@@ -56,7 +56,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardAnalyze"
-                android:layout_width="300dp"
+                android:layout_width="340dp"
                 android:layout_height="480dp"
                 android:layout_marginTop="30dp"
                 app:cardCornerRadius="30dp"
@@ -173,6 +173,7 @@
                     android:id="@+id/saveHistoryButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/button_style_1"
                     android:text="@string/save_button"
@@ -183,6 +184,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_style_1"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="@string/detail_button"
                     android:textAllCaps="false" />
             </LinearLayout>

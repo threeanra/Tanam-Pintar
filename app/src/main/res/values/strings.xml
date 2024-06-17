@@ -76,7 +76,7 @@
     <string name="gallery">Ini Galeri</string>
     <string name="reset">Reset Gambar</string>
     <string name="analyze">Analisa Gambar</string>
-    <string name="save_button">Simpan Riwayat?</string>
+    <string name="save_button">Simpan Riwayat</string>
     <string name="detail_button">Detail Tanah</string>
     <string name="result_analyze">Hasil Analisa : %s</string>
 </resources>
