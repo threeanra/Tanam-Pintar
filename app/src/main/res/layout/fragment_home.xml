@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     android:background="@color/background_color">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="100dp">
+        android:paddingBottom="50dp">
 
         <ImageView
             android:layout_width="match_parent"
@@ -290,13 +291,14 @@
 
                 <com.facebook.shimmer.ShimmerFrameLayout
                     android:id="@+id/shimmer_view_container"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="horizontal">
 
                         <include layout="@layout/soil_type_list_shimmer" />
@@ -308,9 +310,7 @@
                         <include layout="@layout/soil_type_list_shimmer" />
                     </LinearLayout>
 
-
                 </com.facebook.shimmer.ShimmerFrameLayout>
-
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvSoilType"
@@ -322,13 +322,9 @@
                     android:overScrollMode="never"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     tools:listitem="@layout/soil_type_list" />
-
             </FrameLayout>
-
-
         </LinearLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 
 </ScrollView>

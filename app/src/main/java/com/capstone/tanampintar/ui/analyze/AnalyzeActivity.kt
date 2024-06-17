@@ -8,6 +8,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import android.Manifest
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import androidx.activity.result.PickVisualMediaRequest
@@ -85,7 +87,10 @@ class AnalyzeActivity : AppCompatActivity() {
                 }
 
                 is ResultState.Success -> {
-                    setupDetectionResult(result.data)
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        showLoading(false)
+                        setupDetectionResult(result.data)
+                    }, 3000)
                 }
 
                 is ResultState.Error -> {
@@ -156,10 +161,12 @@ class AnalyzeActivity : AppCompatActivity() {
     }
 
     private fun setupDetectionResult(data: DetectionResponse) {
-        binding.apply {
-            result.apply {
-                isVisible = true
-                text = data.prediction.toString()
+        if (currentImageUri != null) {
+            binding.apply {
+                result.apply {
+                    isVisible = true
+                    text = data.prediction.toString()
+                }
             }
         }
     }

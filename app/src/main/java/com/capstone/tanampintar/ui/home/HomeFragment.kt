@@ -62,10 +62,10 @@ class HomeFragment : Fragment() {
                 homeBinding.fullname.text = it.name
             }
         }
+
         Handler(Looper.getMainLooper()).postDelayed({
             setupViewModel()
         }, 1000)
-
 
 
         return homeBinding.root
@@ -96,7 +96,6 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-
 
     }
 

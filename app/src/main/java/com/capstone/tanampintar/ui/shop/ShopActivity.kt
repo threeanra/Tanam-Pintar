@@ -3,6 +3,7 @@ package com.capstone.tanampintar.ui.shop
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.tanampintar.adapter.FertilizerAdapter
@@ -14,13 +15,15 @@ import com.facebook.shimmer.ShimmerFrameLayout
 
 class ShopActivity : AppCompatActivity() {
     private lateinit var binding: ActivityShopBinding
-    private lateinit var shimmerFrameLayout: ShimmerFrameLayout
+    private lateinit var shimmerFrameLayoutTools: ShimmerFrameLayout
+    private lateinit var shimmerFrameLayoutFertilizer: ShimmerFrameLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityShopBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        shimmerFrameLayout = binding.shimmerToolsContainer
-        shimmerFrameLayout = binding.shimmerFertilizerContainer
+        shimmerFrameLayoutTools = binding.shimmerToolsContainer
+        shimmerFrameLayoutFertilizer = binding.shimmerFertilizerContainer
 
         binding.imgBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
@@ -28,10 +31,11 @@ class ShopActivity : AppCompatActivity() {
         }
 
         Handler(Looper.getMainLooper()).postDelayed({
+            shimmerFrameLayoutTools.visibility = View.GONE
+            shimmerFrameLayoutFertilizer.visibility = View.GONE
             toolsRecyclerView()
             fertilizerRecyclerView()
         }, 1000)
-
 
     }
 
