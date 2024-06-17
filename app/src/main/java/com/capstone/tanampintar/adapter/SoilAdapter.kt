@@ -15,7 +15,8 @@ class SoilAdapter(
     private val soil: List<Soil>
 ) : RecyclerView.Adapter<SoilAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding = SoilTypeListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            SoilTypeListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
     }
 
@@ -26,8 +27,9 @@ class SoilAdapter(
         holder.bind(soil)
     }
 
-    class MyViewHolder(private val binding: SoilTypeListBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(soil: Soil){
+    class MyViewHolder(private val binding: SoilTypeListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(soil: Soil) {
             binding.soilTypeTitle.text = soil.soilName
             Glide.with(binding.soilImage.context)
                 .load(soil.imageUrl)
@@ -35,9 +37,10 @@ class SoilAdapter(
 
             binding.root.setOnClickListener {
                 val intentDetailActivity = Intent(binding.root.context, DetailActivity::class.java)
-                intentDetailActivity.putExtra(DetailActivity.SOIL_ID,soil.id)
+                intentDetailActivity.putExtra(DetailActivity.SOIL_ID, soil.id)
                 binding.root.context.startActivity(intentDetailActivity)
             }
+
         }
     }
 }

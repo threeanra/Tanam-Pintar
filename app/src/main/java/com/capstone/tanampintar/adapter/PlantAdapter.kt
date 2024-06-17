@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstone.tanampintar.data.network.response.Plant
-import com.capstone.tanampintar.databinding.PlantRecommendationsBinding
+import com.capstone.tanampintar.databinding.PlantListBinding
 
 
 class PlantAdapter(
     private val plant: List<Plant>
 ) : RecyclerView.Adapter<PlantAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding = PlantRecommendationsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = PlantListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
     }
 
@@ -23,8 +23,9 @@ class PlantAdapter(
         holder.bind(plant)
     }
 
-    class MyViewHolder(private val binding: PlantRecommendationsBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(plant: Plant){
+    class MyViewHolder(private val binding: PlantListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(plant: Plant) {
             binding.plantTitle.text = plant.plantName
             Glide.with(binding.plantImage.context)
                 .load(plant.imageUrl)
