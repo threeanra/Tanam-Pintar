@@ -79,4 +79,5 @@
     <string name="save_button">Simpan Riwayat</string>
     <string name="detail_button">Detail Tanah</string>
     <string name="result_analyze">Hasil Analisa : %s</string>
+    <string name="empty_image_warning">Pilih gambar terlebih dahulu</string>
 </resources>

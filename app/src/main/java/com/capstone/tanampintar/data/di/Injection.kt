@@ -4,6 +4,7 @@ import android.content.Context
 import com.capstone.tanampintar.data.local.pref.UserPreferences
 import com.capstone.tanampintar.data.local.pref.dataStore
 import com.capstone.tanampintar.data.network.retrofit.ApiConfig
+import com.capstone.tanampintar.repository.DetectionRepository
 import com.capstone.tanampintar.repository.PlantRepository
 import com.capstone.tanampintar.repository.SoilRepository
 import com.capstone.tanampintar.repository.UserRepository
@@ -23,5 +24,10 @@ object Injection {
     fun getPlantRepository(context: Context): PlantRepository {
         val apiService = ApiConfig.getApiService()
         return PlantRepository.getInstance(apiService)
+    }
+
+    fun getDetectionRepository(context: Context): DetectionRepository {
+        val apiService = ApiConfig.getApiService()
+        return DetectionRepository.getInstance(apiService)
     }
 }

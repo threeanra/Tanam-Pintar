@@ -30,7 +30,7 @@ class ShopActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             toolsRecyclerView()
             fertilizerRecyclerView()
-        }, 5000)
+        }, 1000)
 
 
     }

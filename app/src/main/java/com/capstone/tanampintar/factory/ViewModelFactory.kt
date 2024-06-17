@@ -7,22 +7,24 @@ import com.capstone.tanampintar.data.di.Injection
 import com.capstone.tanampintar.data.local.pref.PreferencesHelper
 import com.capstone.tanampintar.data.local.pref.UserPreferences
 import com.capstone.tanampintar.data.local.pref.dataStore
+import com.capstone.tanampintar.repository.DetectionRepository
 import com.capstone.tanampintar.repository.PlantRepository
 import com.capstone.tanampintar.repository.SoilRepository
 import com.capstone.tanampintar.repository.UserRepository
+import com.capstone.tanampintar.ui.analyze.AnalyzeViewModel
 import com.capstone.tanampintar.ui.detail.DetailViewModel
 import com.capstone.tanampintar.ui.home.HomeViewModel
 import com.capstone.tanampintar.ui.login.LoginViewModel
 import com.capstone.tanampintar.ui.profile.SettingsViewModel
 import com.capstone.tanampintar.ui.register.RegisterViewModel
 import com.capstone.tanampintar.ui.splashscreen.AuthViewModel
-import java.security.PrivateKey
 
 
 class ViewModelFactory private constructor(
     private val userRepository: UserRepository,
     private val soilRepository: SoilRepository,
     private val plantRepository: PlantRepository,
+    private val detectionRepository: DetectionRepository,
     private val pref: UserPreferences,
     private val preferencesHelper: PreferencesHelper
 ) : ViewModelProvider.NewInstanceFactory() {
@@ -54,6 +56,10 @@ class ViewModelFactory private constructor(
                 SettingsViewModel(preferencesHelper) as T
             }
 
+            modelClass.isAssignableFrom(AnalyzeViewModel::class.java) -> {
+                AnalyzeViewModel(detectionRepository) as T
+            }
+
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
@@ -67,6 +73,7 @@ class ViewModelFactory private constructor(
                     Injection.getAuthRepository(context),
                     Injection.getSoilRepository(context),
                     Injection.getPlantRepository(context),
+                    Injection.getDetectionRepository(context),
                     pref = UserPreferences.getInstance(context.dataStore),
                     PreferencesHelper(context)
                 )

@@ -64,7 +64,7 @@ class HomeFragment : Fragment() {
         }
         Handler(Looper.getMainLooper()).postDelayed({
             setupViewModel()
-        }, 5000)
+        }, 1000)
 
 
 
@@ -81,7 +81,7 @@ class HomeFragment : Fragment() {
 
                 is ResultState.Error -> {
                     shimmerFrameLayout.stopShimmer()
-                    shimmerFrameLayout.visibility = View.GONE
+                    shimmerFrameLayout.visibility = View.VISIBLE
                     Toast.makeText(
                         requireContext(),
                         response.error,
