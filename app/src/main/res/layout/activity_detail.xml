@@ -26,11 +26,11 @@
         <androidx.cardview.widget.CardView
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="23dp"
             app:cardCornerRadius="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="23dp"
-            android:layout_marginLeft="23dp">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/img_back"
@@ -38,8 +38,7 @@
                 android:layout_height="match_parent"
                 android:contentDescription="@string/buttonback"
                 android:padding="11dp"
-                android:src="@drawable/back_button"
-               />
+                android:src="@drawable/back_button" />
 
         </androidx.cardview.widget.CardView>
 
@@ -50,11 +49,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="16dp"
-            android:textColor="@color/text_color_primary"
             android:ellipsize="end"
             android:fontFamily="@font/poppins_bold"
             android:maxLines="1"
             android:text="@string/title"
+            android:textColor="@color/text_color_primary"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -100,21 +99,47 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_description" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/plantList"
-            android:layout_width="0dp"
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:overScrollMode="never"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textPlantRecommend"
-            tools:listitem="@layout/plant_recommendations" />
+            app:layout_constraintTop_toBottomOf="@id/textPlantRecommend">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_plant_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <include layout="@layout/plant_list_shimmer" />
+
+                    <include layout="@layout/plant_list_shimmer" />
+
+                    <include layout="@layout/plant_list_shimmer" />
+                </LinearLayout>
+
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/plantList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:listitem="@layout/plant_list" />
+        </FrameLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </ScrollView>
