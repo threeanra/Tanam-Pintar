@@ -41,7 +41,7 @@ class RegisterActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this@RegisterActivity,
-                        "Please fill the form correctly",
+                        "Silahkan isi data benar",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

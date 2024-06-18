@@ -79,17 +79,6 @@
                         android:src="@drawable/image_preview"
                         tools:ignore="MissingConstraints" />
 
-                    <com.google.android.material.progressindicator.LinearProgressIndicator
-                        android:id="@+id/loading"
-                        android:layout_width="320dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:visibility="gone"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageDetection"
-                        tools:visibility="visible" />
-
                     <LinearLayout
                         android:id="@+id/buttonLayout"
                         android:layout_width="match_parent"
@@ -183,6 +172,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/button_style_1"
                     android:text="@string/save_button"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:textAllCaps="false" />
 
                 <Button

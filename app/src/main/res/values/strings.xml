@@ -8,7 +8,7 @@
     <!--    Home-->
     <string name="home">Home</string>
     <string name="greeting">Halo,</string>
-    <string name="fullname">Full Name</string>
+    <string name="fullname">Nama Lengkap</string>
     <string name="profile">Profil</string>
     <string name="scan">Scan</string>
     <string name="history">Riwayat</string>
@@ -28,7 +28,7 @@
     <string name="password_require">Minimal 8 Karakter</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="email_error_message">Masukkan format email dengan benar</string>
+    <string name="email_error_message">Masukkan email dengan benar</string>
 
     <!--    Login-->
     <string name="login">Login</string>
@@ -76,8 +76,8 @@
     <string name="gallery">Ini Galeri</string>
     <string name="reset">Reset Gambar</string>
     <string name="analyze">Analisa Gambar</string>
-    <string name="save_button">Simpan Analisa</string>
-    <string name="detail_button">Detail Tanah</string>
+    <string name="save_button">Simpan</string>
+    <string name="detail_button">Detail</string>
     <string name="result_analyze">Hasil Analisa : %s</string>
     <string name="empty_image_warning">Pilih gambar terlebih dahulu</string>
 </resources>

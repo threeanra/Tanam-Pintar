@@ -1,7 +1,6 @@
 package com.capstone.tanampintar.ui.splashscreen
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -15,9 +14,7 @@ import com.capstone.tanampintar.data.local.pref.PreferencesHelper
 import com.capstone.tanampintar.databinding.ActivitySplashScreenBinding
 import com.capstone.tanampintar.factory.ViewModelFactory
 import com.capstone.tanampintar.ui.MainActivity
-import com.capstone.tanampintar.ui.detail.DetailActivity
 import com.capstone.tanampintar.ui.login.LoginActivity
-import com.capstone.tanampintar.ui.profile.ProfileFragment
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
@@ -43,13 +40,14 @@ class SplashScreenActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed(
             {
-                viewModel.getUser().observe(this) { token ->
-                    val intentActivity = Intent(
-                        this,
-                        if (token == null) LoginActivity::class.java else MainActivity::class.java
-                    )
-                    startActivity(intentActivity)
-                    finish()
+                viewModel.getUser().observe(this) { user ->
+                    if (user != null && user.token.isNotEmpty()) {
+                        MainActivity.start(this)
+                        finish()
+                    } else {
+                        LoginActivity.start(this)
+                        finish()
+                    }
                 }
             },
             DELAY

@@ -68,25 +68,23 @@ class AnalyzeActivity : AppCompatActivity() {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
         }
 
-        binding.imgBack.setOnClickListener{
-            onBackPressedDispatcher.onBackPressed()
-            finish()
-        }
-
-        binding.camera.setOnClickListener {
-            startCamera()
-        }
-
-        binding.gallery.setOnClickListener{
-            startGallery()
-        }
-
-        binding.analyze.setOnClickListener{
-            uploadImage()
-        }
-
-        binding.clear.setOnClickListener {
-            reset()
+        binding.apply {
+            imgBack.setOnClickListener{
+                onBackPressedDispatcher.onBackPressed()
+                finish()
+            }
+            camera.setOnClickListener {
+                startCamera()
+            }
+            gallery.setOnClickListener{
+                startGallery()
+            }
+            analyze.setOnClickListener{
+                uploadImage()
+            }
+            clear.setOnClickListener {
+                reset()
+            }
         }
 
         binding.detailButton.setOnClickListener {
@@ -99,30 +97,31 @@ class AnalyzeActivity : AppCompatActivity() {
             }
         }
 
-
         viewModel.result.observe(this) { result ->
             when (result) {
                 is ResultState.Loading -> {
-                    showLoading(true)
-                    binding.analyze.text = "Sedang diproses..."
-                    binding.analyze.isEnabled = false
+                    binding.apply {
+                        analyze.text = "Sedang diproses..."
+                        analyze.isEnabled = false
+                        gallery.isEnabled = false
+                        camera.isEnabled = false
+                        clear.isEnabled = false
+                    }
                 }
 
                 is ResultState.Success -> {
                     Handler(Looper.getMainLooper()).postDelayed({
-                        showLoading(false)
-
                         setupDetectionResult(result.data)
                         binding.apply {
                             analyze.text = "Selesai"
                             gallery.isEnabled = false
                             camera.isEnabled = false
+                            clear.isEnabled = true
                         }
                     }, 3000)
                 }
 
                 is ResultState.Error -> {
-                    showLoading(false)
                     binding.apply {
                         analyze.text = "Gagal memproses gambar"
                         gallery.isEnabled = false
@@ -196,10 +195,6 @@ class AnalyzeActivity : AppCompatActivity() {
             )
             viewModel.uploadImage(multipartBody)
         }
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        binding.loading.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun showToast(message: String) {

@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(
                     this@LoginActivity,
-                    "Please fill the form correctly",
+                    "Isi email dan password terlebih dahulu",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -80,11 +80,11 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-
     companion object {
         fun start(context: Context) {
-            val starter = Intent(context, LoginActivity::class.java)
-            context.startActivity(starter)
+            val intent = Intent(context, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            context.startActivity(intent)
         }
     }
 }

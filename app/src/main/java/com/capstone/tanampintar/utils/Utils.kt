@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-private const val MAXIMAL_SIZE = 1000000 //1 MB
+private const val MAXIMAL_SIZE = 4000000 //4 MB
 private const val FILENAME_FORMAT = "yyyyMMdd_HHmmss"
 private val timeStamp: String = SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(Date())
 
@@ -38,8 +38,6 @@ fun getImageUri(context: Context): Uri {
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
             contentValues
         )
-        // content://media/external/images/media/1000000062
-        // storage/emulated/0/Pictures/MyCamera/20230825_155303.jpg
     }
     return uri ?: getImageUriForPreQ(context)
 }
@@ -53,7 +51,6 @@ private fun getImageUriForPreQ(context: Context): Uri {
         "${BuildConfig.APPLICATION_ID}.fileprovider",
         imageFile
     )
-    //content://com.dicoding.picodiploma.mycamera.fileprovider/my_images/MyCamera/20230825_133659.jpg
 }
 
 fun createCustomTempFile(context: Context): File {

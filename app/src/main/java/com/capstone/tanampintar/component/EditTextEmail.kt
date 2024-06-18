@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.util.Patterns
 import androidx.appcompat.widget.AppCompatEditText
 import com.capstone.tanampintar.R
+import com.google.android.material.textfield.TextInputLayout
 
 class EditTextEmail : AppCompatEditText {
 
@@ -30,17 +31,22 @@ class EditTextEmail : AppCompatEditText {
 
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun afterTextChanged(s: Editable) {
-                // Email validation
-                // Display error automatically if the email is not valid
-                error = if (s.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(s).matches()) {
-                    null
-                } else {
-                    context.getString(R.string.email_error_message)
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                return when {
+                    !isValidEmail(s.toString()) -> {
+                        error =  context.getString(R.string.email_error_message)
+                    }
+                    else -> {
+                        error =  null
+                    }
                 }
             }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
+    }
+
+    private fun isValidEmail(email: CharSequence): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 }
