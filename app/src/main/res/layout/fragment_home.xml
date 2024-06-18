@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none"
-    android:background="@color/background_color">
+    android:background="@color/background_color"
+    android:scrollbars="none">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -293,15 +293,14 @@
                     android:id="@+id/shimmer_view_container"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <include layout="@layout/soil_type_list_shimmer" />
+                        android:orientation="horizontal"
+                        android:overScrollMode="never">
 
                         <include layout="@layout/soil_type_list_shimmer" />
 
