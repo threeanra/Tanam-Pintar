@@ -15,6 +15,7 @@ import android.util.Log
 import android.view.View
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.viewModels
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.isVisible
 import com.capstone.tanampintar.R
 import com.capstone.tanampintar.data.network.ResultState
@@ -33,7 +34,6 @@ import okhttp3.RequestBody.Companion.asRequestBody
 class AnalyzeActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityAnalyzeBinding
-    private var soilResponse: SoilResponse? = null
     private var resultString = ""
     var id = ""
 
@@ -85,6 +85,10 @@ class AnalyzeActivity : AppCompatActivity() {
             uploadImage()
         }
 
+        binding.clear.setOnClickListener {
+            reset()
+        }
+
         binding.detailButton.setOnClickListener {
             if(resultString != "") {
                 val intent = Intent(this, DetailActivity::class.java)
@@ -100,20 +104,30 @@ class AnalyzeActivity : AppCompatActivity() {
             when (result) {
                 is ResultState.Loading -> {
                     showLoading(true)
-                    binding.analyze.text = "Memproses gambar..."
+                    binding.analyze.text = "Sedang diproses..."
                     binding.analyze.isEnabled = false
                 }
 
                 is ResultState.Success -> {
                     Handler(Looper.getMainLooper()).postDelayed({
                         showLoading(false)
-                        binding.analyze.text = "Selesai"
+
                         setupDetectionResult(result.data)
+                        binding.apply {
+                            analyze.text = "Selesai"
+                            gallery.isEnabled = false
+                            camera.isEnabled = false
+                        }
                     }, 3000)
                 }
 
                 is ResultState.Error -> {
                     showLoading(false)
+                    binding.apply {
+                        analyze.text = "Gagal memproses gambar"
+                        gallery.isEnabled = false
+                        camera.isEnabled = false
+                    }
                     Log.d("DetectionResponse", "Prediction: ${result.error}")
                 }
             }
@@ -154,6 +168,19 @@ class AnalyzeActivity : AppCompatActivity() {
             Log.d("Image URI", "showImage: $it")
             binding.imageDetection.setImageURI(it)
             binding.analyze.isEnabled = true
+        }
+    }
+
+    private fun reset() {
+        currentImageUri = null
+        binding.apply {
+            imageDetection.setImageResource(R.drawable.image_preview)
+            binding.btnLayout.visibility = View.GONE
+            analyze.text = "Analisa Gambar"
+            result.visibility = View.GONE
+            analyze.isEnabled = false
+            gallery.isEnabled = true
+            camera.isEnabled = true
         }
     }
 
