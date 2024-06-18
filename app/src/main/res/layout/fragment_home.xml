@@ -307,6 +307,7 @@
                         <include layout="@layout/soil_type_list_shimmer" />
 
                         <include layout="@layout/soil_type_list_shimmer" />
+                        <include layout="@layout/soil_type_list_shimmer" />
                     </LinearLayout>
 
                 </com.facebook.shimmer.ShimmerFrameLayout>

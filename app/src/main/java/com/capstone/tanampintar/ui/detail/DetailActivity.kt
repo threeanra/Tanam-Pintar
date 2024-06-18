@@ -3,6 +3,7 @@ package com.capstone.tanampintar.ui.detail
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -41,7 +42,7 @@ class DetailActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             setupViewModel()
-        }, 3000)
+        }, 500)
 
 
         binding.imgBack.setOnClickListener {
@@ -132,9 +133,9 @@ class DetailActivity : AppCompatActivity() {
     private fun setupRecyclerView(plantResponse: PlantResponse, soilId: String) {
         // Find the Plant object with the specified ID
         val matchingPlants = plantResponse.plant.filter { it.soilType == soilId }
+        Log.d("Plants", matchingPlants.toString())
         if (matchingPlants.isNotEmpty()) {
-            binding.plantList.layoutManager =
-                LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            binding.plantList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
             val adapter = PlantAdapter(matchingPlants)
             binding.plantList.adapter = adapter
         }

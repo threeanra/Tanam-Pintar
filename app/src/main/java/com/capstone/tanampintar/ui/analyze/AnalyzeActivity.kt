@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import android.Manifest
+import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -15,10 +16,13 @@ import android.view.View
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
+import com.capstone.tanampintar.R
 import com.capstone.tanampintar.data.network.ResultState
 import com.capstone.tanampintar.data.network.response.DetectionResponse
+import com.capstone.tanampintar.data.network.response.SoilResponse
 import com.capstone.tanampintar.databinding.ActivityAnalyzeBinding
 import com.capstone.tanampintar.factory.ViewModelFactory
+import com.capstone.tanampintar.ui.detail.DetailActivity
 import com.capstone.tanampintar.utils.getImageUri
 import com.capstone.tanampintar.utils.reduceFileImage
 import com.capstone.tanampintar.utils.uriToFile
@@ -29,13 +33,15 @@ import okhttp3.RequestBody.Companion.asRequestBody
 class AnalyzeActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityAnalyzeBinding
+    private var soilResponse: SoilResponse? = null
+    private var resultString = ""
+    var id = ""
 
     private val viewModel: AnalyzeViewModel by viewModels<AnalyzeViewModel> {
         ViewModelFactory.getInstance(this)
     }
 
     private var currentImageUri: Uri? = null
-    lateinit var resultString : String
 
     private val requestPermissionLauncher =
         registerForActivityResult(
@@ -79,16 +85,29 @@ class AnalyzeActivity : AppCompatActivity() {
             uploadImage()
         }
 
+        binding.detailButton.setOnClickListener {
+            if(resultString != "") {
+                val intent = Intent(this, DetailActivity::class.java)
+                intent.putExtra(DetailActivity.SOIL_ID, id)
+                startActivity(intent)
+            } else {
+                showToast("Data tanah tidak valid")
+            }
+        }
+
+
         viewModel.result.observe(this) { result ->
             when (result) {
                 is ResultState.Loading -> {
                     showLoading(true)
+                    binding.analyze.text = "Memproses gambar..."
                     binding.analyze.isEnabled = false
                 }
 
                 is ResultState.Success -> {
                     Handler(Looper.getMainLooper()).postDelayed({
                         showLoading(false)
+                        binding.analyze.text = "Selesai"
                         setupDetectionResult(result.data)
                     }, 3000)
                 }
@@ -161,14 +180,39 @@ class AnalyzeActivity : AppCompatActivity() {
     }
 
     private fun setupDetectionResult(data: DetectionResponse) {
+
+        when(data.prediction) {
+            0 -> {
+                resultString = "Aluvial"
+                id = "58ba724d-27cb-11ef-a133-42010a940003"
+            }
+            1 -> {
+                resultString = "Black"
+                id = "e822284d-27ca-11ef-a133-42010a940003"
+            }
+            2 -> {
+                resultString = "Clay"
+                id = "9626a9ca-27ce-11ef-a133-42010a940003"
+            }
+            3 -> {
+                resultString = "RedSoild"
+                id = "241c83d1-27cb-11ef-a133-42010a940003"
+            }
+            else -> ""  // Handle default case if needed
+        }
+
+        Log.d("id", id)
+
         if (currentImageUri != null) {
             binding.apply {
                 result.apply {
                     isVisible = true
-                    text = data.prediction.toString()
+                    text = getString(R.string.result_analyze, resultString)
                 }
+                btnLayout.visibility = View.VISIBLE
             }
         }
+
     }
 
     companion object {
