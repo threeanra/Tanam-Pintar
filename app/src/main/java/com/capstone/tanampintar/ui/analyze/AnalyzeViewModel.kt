@@ -17,7 +17,6 @@ class AnalyzeViewModel(
 ) : ViewModel() {
 
     val result: LiveData<ResultState<DetectionResponse>> = repository.result
-    val allHistory: LiveData<List<AnalysisResult>> = analysisResultRepository.getAllAnalysisResults()
 
     fun uploadImage(image: MultipartBody.Part) {
         viewModelScope.launch {
@@ -30,6 +29,5 @@ class AnalyzeViewModel(
             analysisResultRepository.insertAnalysisResult(result)
         }
     }
-
 
 }

@@ -17,6 +17,5 @@ class AboutUsActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
             finish()
         }
-
     }
 }

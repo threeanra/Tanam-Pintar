@@ -67,6 +67,8 @@
     <!--    History-->
     <string name="title_history">Riwayat Analisa</string>
     <string name="time_history">DD:MM:YYYY</string>
+    <string name="delete">Hapus</string>
+    <string name="delete_message">Apakah yakin menghapus riwayat?</string>
 
     <!--    Analyze-->
     <string name="title_analyze">Deteksi Tanah</string>
@@ -80,4 +82,5 @@
     <string name="detail_button">Detail</string>
     <string name="result_analyze">Hasil Analisa : %s</string>
     <string name="empty_image_warning">Pilih gambar terlebih dahulu</string>
+
 </resources>

@@ -33,7 +33,7 @@ class SoilRepository(
             // Handle other exceptions
             _soil.value = ResultState.Error("An unexpected error occurred")
             // Log the exception for debugging
-            Log.e("SoilRepository", "Exception during login", e)
+            Log.e("SoilRepository", "Exception", e)
         }
     }
 

@@ -15,13 +15,11 @@ import android.util.Log
 import android.view.View
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.viewModels
-import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.isVisible
 import com.capstone.tanampintar.R
 import com.capstone.tanampintar.data.local.room.AnalysisResult
 import com.capstone.tanampintar.data.network.ResultState
 import com.capstone.tanampintar.data.network.response.DetectionResponse
-import com.capstone.tanampintar.data.network.response.SoilResponse
 import com.capstone.tanampintar.databinding.ActivityAnalyzeBinding
 import com.capstone.tanampintar.factory.ViewModelFactory
 import com.capstone.tanampintar.ui.detail.DetailActivity
@@ -33,9 +31,6 @@ import com.capstone.tanampintar.utils.uriToFile
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 class AnalyzeActivity : AppCompatActivity() {
 
@@ -217,10 +212,13 @@ class AnalyzeActivity : AppCompatActivity() {
                 time = dateFormat
             )
             viewModel.insertAnalysisResult(history)
-            showToast("Hasil analisis berhasil disimpan")
+            showToast("Hasil analisia berhasil disimpan")
 
-            val intent = Intent(this, HistoryActivity::class.java)
-            startActivity(intent)
+            Handler(Looper.getMainLooper()).postDelayed({
+                HistoryActivity.start(this)
+                finish()
+            }, 800)
+
         }
     }
 

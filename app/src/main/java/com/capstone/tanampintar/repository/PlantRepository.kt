@@ -26,7 +26,7 @@ class PlantRepository(
             // Handle other exceptions
             _plant.value = ResultState.Error("An unexpected error occurred")
             // Log the exception for debugging
-            Log.e("SoilRepository", "Exception during login", e)
+            Log.e("SoilRepository", "Exception", e)
         }
     }
 
