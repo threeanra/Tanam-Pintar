@@ -3,6 +3,8 @@ package com.capstone.tanampintar.ui.history
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.tanampintar.adapter.HistoryAdapter
 import com.capstone.tanampintar.databinding.ActivityHistoryBinding
 import com.capstone.tanampintar.factory.ViewModelFactory
+import com.facebook.shimmer.ShimmerFrameLayout
 
 class HistoryActivity : AppCompatActivity() {
 
@@ -18,14 +21,24 @@ class HistoryActivity : AppCompatActivity() {
     private val viewModel: HistoryViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
+    private lateinit var shimmerHistory: ShimmerFrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        shimmerHistory = binding.shimmerHistory
 
-        setupRecyclerView()
-        setupViewModel()
+        shimmerHistory.startShimmer()
+        shimmerHistory.isVisible = true
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            shimmerHistory.stopShimmer()
+            shimmerHistory.isVisible = false
+            setupRecyclerView()
+            setupViewModel()
+        }, 3000)
+
 
         binding.imgBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()

@@ -12,6 +12,7 @@ import com.capstone.tanampintar.R
 import com.capstone.tanampintar.data.local.room.AnalysisResult
 import com.capstone.tanampintar.databinding.HistoryListBinding
 import com.capstone.tanampintar.ui.history.HistoryViewModel
+import com.facebook.shimmer.ShimmerFrameLayout
 
 class HistoryAdapter(private val viewModel: HistoryViewModel) :
     ListAdapter<AnalysisResult, HistoryAdapter.HistoryViewHolder>(AnalysisResultDiffCallback()) {
@@ -40,8 +41,9 @@ class HistoryAdapter(private val viewModel: HistoryViewModel) :
             }
         }
 
-        private fun showDeleteDialog(item : AnalysisResult) {
-            val dialogView = LayoutInflater.from(itemView.context).inflate(R.layout.alert_dialog_history, null)
+        private fun showDeleteDialog(item: AnalysisResult) {
+            val dialogView =
+                LayoutInflater.from(itemView.context).inflate(R.layout.alert_dialog_history, null)
 
             val builder = AlertDialog.Builder(itemView.context)
                 .setView(dialogView)
