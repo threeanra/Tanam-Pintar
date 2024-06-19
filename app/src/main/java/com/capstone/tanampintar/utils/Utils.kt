@@ -113,6 +113,6 @@ fun rotateImage(source: Bitmap, angle: Float): Bitmap? {
 
 fun convertMillsToDateString(time: Long): String {
     val date = Date(time)
-    val dateFormat = SimpleDateFormat("dd MMM yyyy | HH:mm", Locale.getDefault())
+    val dateFormat = SimpleDateFormat("dd MMMM yyyy | HH:mm", Locale.getDefault())
     return dateFormat.format(date)
 }
