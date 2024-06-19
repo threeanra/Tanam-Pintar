@@ -1,9 +1,6 @@
 package com.capstone.tanampintar.ui.history
 
-import android.os.Handler
-import android.os.Looper
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.capstone.tanampintar.data.local.room.AnalysisResult
