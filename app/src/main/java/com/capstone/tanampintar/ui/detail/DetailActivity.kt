@@ -42,7 +42,7 @@ class DetailActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             setupViewModel()
-        }, 500)
+        }, 3000)
 
 
         binding.imgBack.setOnClickListener {
