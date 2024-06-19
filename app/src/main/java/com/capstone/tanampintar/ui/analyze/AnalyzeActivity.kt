@@ -70,7 +70,6 @@ class AnalyzeActivity : AppCompatActivity() {
         binding.apply {
             imgBack.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
-                viewModel.clear() // Clear ViewModel resources
                 finish()
             }
             camera.setOnClickListener {
@@ -110,17 +109,19 @@ class AnalyzeActivity : AppCompatActivity() {
                 }
 
                 is ResultState.Success -> {
+                    if (currentImageUri != null) {
                         Handler(Looper.getMainLooper()).postDelayed({
                             setupDetectionResult(result.data)
                             binding.apply {
-                                analyze.text = "Analisa Gambar"
+                                analyze.text = "Selesai"
                                 analyze.isEnabled = false
-                                gallery.isEnabled = true
-                                camera.isEnabled = true
+                                gallery.isEnabled = false
+                                camera.isEnabled = false
                                 clear.isEnabled = true
                             }
                         }, 3000)
                         Log.d("DetectionResponse", "Prediction: ${result.data}")
+                    }
                 }
 
                 is ResultState.Error -> {
@@ -269,11 +270,6 @@ class AnalyzeActivity : AppCompatActivity() {
                 btnLayout.visibility = View.VISIBLE
             }
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        viewModel.result.removeObservers(this)
     }
 
     companion object {

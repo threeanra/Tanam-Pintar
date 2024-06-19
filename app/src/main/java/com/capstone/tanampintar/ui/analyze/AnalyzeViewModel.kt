@@ -29,7 +29,4 @@ class AnalyzeViewModel(
             analysisResultRepository.insertAnalysisResult(result)
         }
     }
-
-    fun clear() = onCleared()
-
 }
