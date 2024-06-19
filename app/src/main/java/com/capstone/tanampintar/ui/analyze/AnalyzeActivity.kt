@@ -13,7 +13,6 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
-import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import com.capstone.tanampintar.R
@@ -23,7 +22,6 @@ import com.capstone.tanampintar.data.network.response.DetectionResponse
 import com.capstone.tanampintar.databinding.ActivityAnalyzeBinding
 import com.capstone.tanampintar.factory.ViewModelFactory
 import com.capstone.tanampintar.ui.detail.DetailActivity
-import com.capstone.tanampintar.ui.history.HistoryActivity
 import com.capstone.tanampintar.utils.convertMillsToDateString
 import com.capstone.tanampintar.utils.getImageUri
 import com.capstone.tanampintar.utils.reduceFileImage
@@ -72,6 +70,7 @@ class AnalyzeActivity : AppCompatActivity() {
         binding.apply {
             imgBack.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
+                viewModel.clear() // Clear ViewModel resources
                 finish()
             }
             camera.setOnClickListener {
@@ -102,7 +101,7 @@ class AnalyzeActivity : AppCompatActivity() {
             when (result) {
                 is ResultState.Loading -> {
                     binding.apply {
-                        analyze.text = "Sedang diproses..."
+                        analyze.text = "Memproses Gambar.."
                         analyze.isEnabled = false
                         gallery.isEnabled = false
                         camera.isEnabled = false
@@ -111,15 +110,17 @@ class AnalyzeActivity : AppCompatActivity() {
                 }
 
                 is ResultState.Success -> {
-                    Handler(Looper.getMainLooper()).postDelayed({
-                        setupDetectionResult(result.data)
-                        binding.apply {
-                            analyze.text = "Selesai"
-                            gallery.isEnabled = false
-                            camera.isEnabled = false
-                            clear.isEnabled = true
-                        }
-                    }, 3000)
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            setupDetectionResult(result.data)
+                            binding.apply {
+                                analyze.text = "Analisa Gambar"
+                                analyze.isEnabled = false
+                                gallery.isEnabled = true
+                                camera.isEnabled = true
+                                clear.isEnabled = true
+                            }
+                        }, 3000)
+                        Log.d("DetectionResponse", "Prediction: ${result.data}")
                 }
 
                 is ResultState.Error -> {
@@ -140,14 +141,18 @@ class AnalyzeActivity : AppCompatActivity() {
     }
 
     private fun startGallery() {
-        launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        launcherGallery.launch(arrayOf("image/*"))
     }
 
     private val launcherGallery = registerForActivityResult(
-        ActivityResultContracts.PickVisualMedia()
+        ActivityResultContracts.OpenDocument()
     ) { uri: Uri? ->
         if (uri != null) {
             currentImageUri = uri
+            contentResolver.takePersistableUriPermission(
+                uri,
+                Intent.FLAG_GRANT_READ_URI_PERMISSION
+            )
             showImage()
         } else {
             Log.d("Photo Picker", "No media selected")
@@ -211,16 +216,17 @@ class AnalyzeActivity : AppCompatActivity() {
                 image = uri.toString(),
                 time = dateFormat
             )
+            Log.d("Analysis Result", "saveAnalysisResult: $history")
             viewModel.insertAnalysisResult(history)
             showToast("Hasil analisia berhasil disimpan")
 
-            Handler(Looper.getMainLooper()).postDelayed({
-                HistoryActivity.start(this)
-                finish()
-            }, 800)
-
+//            Handler(Looper.getMainLooper()).postDelayed({
+//                HistoryActivity.start(this)
+//                finish()
+//            }, 800)
         }
     }
+
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -252,7 +258,7 @@ class AnalyzeActivity : AppCompatActivity() {
             else -> ""  // Handle default case if needed
         }
 
-        Log.d("id", id)
+        Log.d("result id", id)
 
         if (currentImageUri != null) {
             binding.apply {
@@ -265,6 +271,10 @@ class AnalyzeActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.result.removeObservers(this)
+    }
 
     companion object {
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA

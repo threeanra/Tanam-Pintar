@@ -37,7 +37,7 @@ class HistoryActivity : AppCompatActivity() {
             shimmerHistory.isVisible = false
             setupRecyclerView()
             setupViewModel()
-        }, 3000)
+        }, 1000)
 
 
         binding.imgBack.setOnClickListener {

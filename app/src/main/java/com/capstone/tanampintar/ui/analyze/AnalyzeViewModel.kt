@@ -30,4 +30,6 @@ class AnalyzeViewModel(
         }
     }
 
+    fun clear() = onCleared()
+
 }
