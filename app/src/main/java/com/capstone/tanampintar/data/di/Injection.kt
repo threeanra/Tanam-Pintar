@@ -3,7 +3,9 @@ package com.capstone.tanampintar.data.di
 import android.content.Context
 import com.capstone.tanampintar.data.local.pref.UserPreferences
 import com.capstone.tanampintar.data.local.pref.dataStore
+import com.capstone.tanampintar.data.local.room.HistoryDatabase
 import com.capstone.tanampintar.data.network.retrofit.ApiConfig
+import com.capstone.tanampintar.repository.AnalysisResultRepository
 import com.capstone.tanampintar.repository.DetectionRepository
 import com.capstone.tanampintar.repository.PlantRepository
 import com.capstone.tanampintar.repository.SoilRepository
@@ -29,5 +31,10 @@ object Injection {
     fun getDetectionRepository(context: Context): DetectionRepository {
         val apiService = ApiConfig.getApiService()
         return DetectionRepository.getInstance(apiService)
+    }
+
+    fun getAnalysisRepository(context: Context): AnalysisResultRepository {
+        val database = HistoryDatabase.getDatabase(context)
+        return AnalysisResultRepository.getInstance(database.analysisResultDao())
     }
 }
