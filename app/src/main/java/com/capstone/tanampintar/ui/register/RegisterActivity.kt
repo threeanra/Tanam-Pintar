@@ -60,7 +60,7 @@ class RegisterActivity : AppCompatActivity() {
                     binding.register.isInvisible = false
                     Toast.makeText(
                         this@RegisterActivity,
-                        response.error,
+                        "Email sudah digunakan",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

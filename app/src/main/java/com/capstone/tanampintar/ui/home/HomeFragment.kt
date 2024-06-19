@@ -1,5 +1,6 @@
 package com.capstone.tanampintar.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -37,6 +38,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var shimmerFrameLayout: ShimmerFrameLayout
 
+    @SuppressLint("FragmentLiveDataObserve")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,7 +56,7 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        viewModel.getUser().observe(viewLifecycleOwner) {
+        viewModel.getUser().observe(this) {
             if (it.token.isEmpty()) {
                 val intent = Intent(requireContext(), LoginActivity::class.java)
                 startActivity(intent)
@@ -71,8 +73,9 @@ class HomeFragment : Fragment() {
         return homeBinding.root
     }
 
+    @SuppressLint("FragmentLiveDataObserve")
     private fun setupViewModel() {
-        soilViewModel.soils.observe(viewLifecycleOwner) { response ->
+        soilViewModel.soils.observe(this) { response ->
             when (response) {
                 is ResultState.Loading -> {
                     shimmerFrameLayout.startShimmer()
