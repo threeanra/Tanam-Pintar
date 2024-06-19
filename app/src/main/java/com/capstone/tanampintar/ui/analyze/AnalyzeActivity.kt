@@ -18,22 +18,28 @@ import androidx.activity.viewModels
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.isVisible
 import com.capstone.tanampintar.R
+import com.capstone.tanampintar.data.local.room.AnalysisResult
 import com.capstone.tanampintar.data.network.ResultState
 import com.capstone.tanampintar.data.network.response.DetectionResponse
 import com.capstone.tanampintar.data.network.response.SoilResponse
 import com.capstone.tanampintar.databinding.ActivityAnalyzeBinding
 import com.capstone.tanampintar.factory.ViewModelFactory
 import com.capstone.tanampintar.ui.detail.DetailActivity
+import com.capstone.tanampintar.ui.history.HistoryActivity
+import com.capstone.tanampintar.utils.convertMillsToDateString
 import com.capstone.tanampintar.utils.getImageUri
 import com.capstone.tanampintar.utils.reduceFileImage
 import com.capstone.tanampintar.utils.uriToFile
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class AnalyzeActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityAnalyzeBinding
+    private lateinit var binding: ActivityAnalyzeBinding
     private var resultString = ""
     var id = ""
 
@@ -69,17 +75,17 @@ class AnalyzeActivity : AppCompatActivity() {
         }
 
         binding.apply {
-            imgBack.setOnClickListener{
+            imgBack.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
                 finish()
             }
             camera.setOnClickListener {
                 startCamera()
             }
-            gallery.setOnClickListener{
+            gallery.setOnClickListener {
                 startGallery()
             }
-            analyze.setOnClickListener{
+            analyze.setOnClickListener {
                 uploadImage()
             }
             clear.setOnClickListener {
@@ -88,7 +94,7 @@ class AnalyzeActivity : AppCompatActivity() {
         }
 
         binding.detailButton.setOnClickListener {
-            if(resultString != "") {
+            if (resultString != "") {
                 val intent = Intent(this, DetailActivity::class.java)
                 intent.putExtra(DetailActivity.SOIL_ID, id)
                 startActivity(intent)
@@ -130,6 +136,10 @@ class AnalyzeActivity : AppCompatActivity() {
                     Log.d("DetectionResponse", "Prediction: ${result.error}")
                 }
             }
+        }
+
+        binding.saveHistoryButton.setOnClickListener {
+            saveAnalysisResult()
         }
 
     }
@@ -197,29 +207,50 @@ class AnalyzeActivity : AppCompatActivity() {
         }
     }
 
+    private fun saveAnalysisResult() {
+        currentImageUri?.let { uri ->
+            val time = System.currentTimeMillis()
+            val dateFormat = convertMillsToDateString(time)
+            val history = AnalysisResult(
+                title = resultString,
+                image = uri.toString(),
+                time = dateFormat
+            )
+            viewModel.insertAnalysisResult(history)
+            showToast("Hasil analisis berhasil disimpan")
+
+            val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun setupDetectionResult(data: DetectionResponse) {
 
-        when(data.prediction) {
+        when (data.prediction) {
             0 -> {
                 resultString = "Aluvial"
                 id = "58ba724d-27cb-11ef-a133-42010a940003"
             }
+
             1 -> {
                 resultString = "Black"
                 id = "e822284d-27ca-11ef-a133-42010a940003"
             }
+
             2 -> {
                 resultString = "Clay"
                 id = "9626a9ca-27ce-11ef-a133-42010a940003"
             }
+
             3 -> {
                 resultString = "RedSoild"
                 id = "241c83d1-27cb-11ef-a133-42010a940003"
             }
+
             else -> ""  // Handle default case if needed
         }
 
@@ -234,8 +265,8 @@ class AnalyzeActivity : AppCompatActivity() {
                 btnLayout.visibility = View.VISIBLE
             }
         }
-
     }
+
 
     companion object {
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA

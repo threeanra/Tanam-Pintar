@@ -7,12 +7,14 @@ import com.capstone.tanampintar.data.di.Injection
 import com.capstone.tanampintar.data.local.pref.PreferencesHelper
 import com.capstone.tanampintar.data.local.pref.UserPreferences
 import com.capstone.tanampintar.data.local.pref.dataStore
+import com.capstone.tanampintar.repository.AnalysisResultRepository
 import com.capstone.tanampintar.repository.DetectionRepository
 import com.capstone.tanampintar.repository.PlantRepository
 import com.capstone.tanampintar.repository.SoilRepository
 import com.capstone.tanampintar.repository.UserRepository
 import com.capstone.tanampintar.ui.analyze.AnalyzeViewModel
 import com.capstone.tanampintar.ui.detail.DetailViewModel
+import com.capstone.tanampintar.ui.history.HistoryViewModel
 import com.capstone.tanampintar.ui.home.HomeViewModel
 import com.capstone.tanampintar.ui.login.LoginViewModel
 import com.capstone.tanampintar.ui.profile.SettingsViewModel
@@ -26,7 +28,8 @@ class ViewModelFactory private constructor(
     private val plantRepository: PlantRepository,
     private val detectionRepository: DetectionRepository,
     private val pref: UserPreferences,
-    private val preferencesHelper: PreferencesHelper
+    private val preferencesHelper: PreferencesHelper,
+    private val analysisResultRepository: AnalysisResultRepository,
 ) : ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -57,7 +60,10 @@ class ViewModelFactory private constructor(
             }
 
             modelClass.isAssignableFrom(AnalyzeViewModel::class.java) -> {
-                AnalyzeViewModel(detectionRepository) as T
+                AnalyzeViewModel(detectionRepository, analysisResultRepository) as T
+            }
+            modelClass.isAssignableFrom(HistoryViewModel::class.java)-> {
+                HistoryViewModel(analysisResultRepository) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
@@ -75,7 +81,8 @@ class ViewModelFactory private constructor(
                     Injection.getPlantRepository(context),
                     Injection.getDetectionRepository(context),
                     pref = UserPreferences.getInstance(context.dataStore),
-                    PreferencesHelper(context)
+                    PreferencesHelper(context),
+                    Injection.getAnalysisRepository(context)
                 )
             }.also { instance = it }
     }
