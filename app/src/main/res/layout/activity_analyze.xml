@@ -60,7 +60,7 @@
                 android:layout_width="340dp"
                 android:layout_height="480dp"
                 android:layout_marginTop="30dp"
-                app:cardCornerRadius="30dp"
+                app:cardCornerRadius="15dp"
                 app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -137,6 +137,44 @@
 
             </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardWarning"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="@color/transparent_red"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardAnalyze">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.6"
+                        android:text="@string/title_warning"
+                        android:textColor="@color/text_color_primary"
+                        android:fontFamily="@font/poppins_bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.6"
+                        android:textColor="@color/text_color_primary"
+                        android:text="@string/desc_warning"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_regular"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
             <TextView
                 android:id="@+id/result"
                 android:layout_width="wrap_content"
@@ -149,7 +187,7 @@
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardAnalyze"
-                tools:visibility="visible" />
+                tools:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/btnLayout"
@@ -162,7 +200,7 @@
                 android:visibility="gone"
                 android:weightSum="2"
                 app:layout_constraintTop_toBottomOf="@+id/result"
-                tools:visibility="visible">
+                tools:visibility="gone">
 
                 <Button
                     android:id="@+id/saveHistoryButton"

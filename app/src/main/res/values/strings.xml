@@ -80,6 +80,8 @@
     <string name="analyze">Analisa Gambar</string>
     <string name="save_button">Simpan</string>
     <string name="detail_button">Detail</string>
+    <string name="title_warning">Silahkan Masukan Gambar</string>
+    <string name="desc_warning">Pastikan gambar identik dengan tanah dan terlihat jelas</string>
     <string name="result_analyze">Hasil Analisa : %s</string>
     <string name="empty_image_warning">Pilih gambar terlebih dahulu</string>
 

@@ -191,6 +191,7 @@ class AnalyzeActivity : AppCompatActivity() {
             analyze.isEnabled = false
             gallery.isEnabled = true
             camera.isEnabled = true
+            cardWarning.visibility = View.VISIBLE
         }
     }
 
@@ -263,6 +264,7 @@ class AnalyzeActivity : AppCompatActivity() {
 
         if (currentImageUri != null) {
             binding.apply {
+                cardWarning.isVisible = false
                 result.apply {
                     isVisible = true
                     text = getString(R.string.result_analyze, resultString)

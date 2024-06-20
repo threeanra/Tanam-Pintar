@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#DB2316</color>
+    <color name="transparent_red">#26DB2316</color>
 
     <color name="main_color">#00A900</color>
     <color name="main_color_variant">#388E3C</color>
