@@ -237,17 +237,17 @@ class AnalyzeActivity : AppCompatActivity() {
 
         when (data.prediction) {
             0 -> {
-                resultString = "Alluvial"
+                resultString = "Alluvial Soil"
                 id = "58ba724d-27cb-11ef-a133-42010a940003"
             }
 
             1 -> {
-                resultString = "Black"
+                resultString = "Black Soil"
                 id = "e822284d-27ca-11ef-a133-42010a940003"
             }
 
             2 -> {
-                resultString = "Clay"
+                resultString = "Clay Soil"
                 id = "9626a9ca-27ce-11ef-a133-42010a940003"
             }
 
