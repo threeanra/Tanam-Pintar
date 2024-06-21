@@ -12,10 +12,9 @@ import com.capstone.tanampintar.R
 import com.capstone.tanampintar.data.local.room.AnalysisResult
 import com.capstone.tanampintar.databinding.HistoryListBinding
 import com.capstone.tanampintar.ui.history.HistoryViewModel
-import com.facebook.shimmer.ShimmerFrameLayout
 
 class HistoryAdapter(private val viewModel: HistoryViewModel) :
-    ListAdapter<AnalysisResult, HistoryAdapter.HistoryViewHolder>(AnalysisResultDiffCallback()) {
+    ListAdapter<AnalysisResult, HistoryAdapter.HistoryViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
         val binding = HistoryListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -64,15 +63,17 @@ class HistoryAdapter(private val viewModel: HistoryViewModel) :
             alertDialog.show()
         }
     }
+
+    companion object {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<AnalysisResult>() {
+            override fun areItemsTheSame(oldItem: AnalysisResult, newItem: AnalysisResult): Boolean {
+                return oldItem.id == newItem.id
+            }
+            override fun areContentsTheSame(oldItem: AnalysisResult, newItem: AnalysisResult): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 }
 
-class AnalysisResultDiffCallback : DiffUtil.ItemCallback<AnalysisResult>() {
-    override fun areItemsTheSame(oldItem: AnalysisResult, newItem: AnalysisResult): Boolean {
-        return oldItem.id == newItem.id
-    }
-
-    override fun areContentsTheSame(oldItem: AnalysisResult, newItem: AnalysisResult): Boolean {
-        return oldItem == newItem
-    }
-}
 
