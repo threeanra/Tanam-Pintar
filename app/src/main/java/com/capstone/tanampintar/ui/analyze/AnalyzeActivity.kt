@@ -137,6 +137,9 @@ class AnalyzeActivity : AppCompatActivity() {
 
         binding.saveHistoryButton.setOnClickListener {
             saveAnalysisResult()
+            Handler(Looper.getMainLooper()).postDelayed({
+                reset()
+            }, 2000)
         }
 
     }
