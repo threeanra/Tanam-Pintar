@@ -16,7 +16,7 @@ interface AnalysisResultDao {
     @Delete
     suspend fun delete(analysisResult: AnalysisResult)
 
-    @Query("SELECT * FROM analysis_results")
+    @Query("SELECT * FROM analysis_results ORDER BY id DESC")
     fun getAllHistory(): LiveData<List<AnalysisResult>>
 
 

@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [AnalysisResult::class], version = 6, exportSchema = true)
+@Database(entities = [AnalysisResult::class], version = 8, exportSchema = true)
 abstract class HistoryDatabase : RoomDatabase() {
     abstract fun analysisResultDao(): AnalysisResultDao
 
